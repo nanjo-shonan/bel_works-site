@@ -11,10 +11,10 @@
     <!-- Tailwind CSSの読み込み -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fontsの読み込み（Inter, Noto Sans JP） -->
+    <!-- Google Fontsの読み込み（Noto Serif JPを追加） -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         /* スムーズスクロール */
@@ -23,10 +23,18 @@
         }
         /* フォント設定 */
         body {
+            /* 本文の基本フォントを明朝体（Noto Serif JP）に設定 */
+            font-family: 'Noto Serif JP', serif;
+            color: #374151; /* 可読性を高めるため、少し柔らかい黒に */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* 見出しやUI要素はゴシック体（Inter / Noto Sans JP）を維持 */
+        h1, h2, h3, h4, h5, h6, a, button, .font-sans {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
         }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            font-weight: 900; /* より力強い見出しに */
         }
         /* ヒーローセクションの背景と高さ調整 */
         .hero-section {
@@ -46,6 +54,16 @@
             justify-content: center;
             align-items: center;
         }
+        /* スクロールアニメーション用のクラス */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
     <script>
         // Tailwind CSSのカスタム設定
@@ -56,26 +74,29 @@
                         'bel-dark-blue': '#1e3a8a', // 深い紺色 (信頼性)
                         'bel-orange': '#f97316',    // 鮮やかなオレンジ (行動喚起)
                         'bel-light-gray': '#f8fafc', // ごく薄いグレー (背景)
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+                        serif: ['Noto Serif JP', 'serif'],
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-white text-gray-700">
 
     <!-- ヘッダーセクション -->
-    <header class="bg-white sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    <header class="bg-white sticky top-0 z-50 shadow-md transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="https://bel.works" class="block">
-                <!-- ロゴ画像をフォルダパスで指定 -->
-                <img src="images/bel-logo.png" alt="ベルワークス ロゴ" class="h-10">
+                <img src="images/bel-logo.png" alt="ベルワークス ロゴ" class="h-10 md:h-12 transition-all duration-300">
             </a>
             <nav class="hidden md:flex space-x-6 lg:space-x-8 items-center">
                 <a href="#mission" class="text-sm lg:text-base text-gray-600 hover:text-bel-dark-blue transition duration-300">私たちの想い</a>
-                <a href="#process" class="text-sm lg:text-base text-gray-600 hover:text-bel-dark-blue transition duration-300">思考プロセスと具体例</a>
+                <a href="#process" class="text-sm lg:text-base text-gray-600 hover:text-bel-dark-blue transition duration-300">思考プロセス</a>
                 <a href="#profile" class="text-sm lg:text-base text-gray-600 hover:text-bel-dark-blue transition duration-300">プロフィール</a>
-                <a href="#whitepaper" class="text-sm lg:text-base bg-bel-orange text-white px-4 py-2 rounded-md hover:bg-orange-600 transition duration-300">資料ダウンロード</a>
+                <a href="#whitepaper" class="text-sm lg:text-base bg-bel-orange text-white px-5 py-2.5 rounded-md hover:bg-orange-600 transition duration-300 shadow hover:shadow-lg transform hover:-translate-y-0.5">資料ダウンロード</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden text-gray-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -84,12 +105,12 @@
             </button>
         </div>
         <!-- モバイルメニュー -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#mission" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">私たちの想い</a>
-            <a href="#process" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">思考プロセスと具体例</a>
-            <a href="#profile" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">プロフィール</a>
-            <a href="#whitepaper" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">資料ダウンロード</a>
-            <a href="#contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">お問い合わせ</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <a href="#mission" class="block py-3 px-6 text-base text-gray-700 hover:bg-gray-50">私たちの想い</a>
+            <a href="#process" class="block py-3 px-6 text-base text-gray-700 hover:bg-gray-50">思考プロセス</a>
+            <a href="#profile" class="block py-3 px-6 text-base text-gray-700 hover:bg-gray-50">プロフィール</a>
+            <a href="#whitepaper" class="block py-3 px-6 text-base text-gray-700 hover:bg-gray-50">資料ダウンロード</a>
+            <a href="#contact" class="block py-3 px-6 text-base text-gray-700 hover:bg-gray-50">お問い合わせ</a>
         </div>
     </header>
 
@@ -97,10 +118,10 @@
         <!-- ヒーローセクション -->
         <section class="hero-section text-white">
             <div class="hero-content container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-4">
                     その広告、ブランドを<br class="md:hidden">損なっていませんか？
                 </h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-300">
+                <p class="font-sans text-lg md:text-xl max-w-3xl mx-auto text-gray-200">
                     守りの法務から、売上を創る攻めの法務戦略へ。<br>
                     ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。
                 </p>
@@ -108,28 +129,28 @@
         </section>
 
         <!-- 私たちの想い (Mission/Vision) セクション -->
-        <section id="mission" class="py-20 bg-white">
+        <section id="mission" class="py-20 lg:py-24 bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                     <p class="text-bel-orange font-bold uppercase tracking-wider mb-2">Our Philosophy</p>
-                    <h2 class="text-3xl md:text-4xl font-bold text-bel-dark-blue">なぜ、私たちが存在するのか</h2>
+                <div class="text-center mb-16 fade-in-section">
+                     <p class="font-sans text-bel-orange font-bold uppercase tracking-wider mb-2">Our Philosophy</p>
+                    <h2 class="text-3xl md:text-4xl font-black text-bel-dark-blue">なぜ、私たちが存在するのか</h2>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-                    <div class="bg-bel-light-gray p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold text-bel-dark-blue mb-4">私たちの使命 (Mission)</h3>
-                        <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                    <div class="bg-bel-light-gray p-8 lg:p-10 rounded-lg fade-in-section">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-bel-dark-blue mb-4">私たちの使命 (Mission)</h3>
+                        <p class="text-gray-800 leading-relaxed text-lg mb-4">
                             誠実なブランドが、その価値を正しく世界に届けられる社会を創る。
                         </p>
-                        <p class="text-gray-600 leading-relaxed">
+                        <p class="leading-relaxed">
                             情熱と誠実さをもって素晴らしい製品を創りながらも、専門知識の不足から法的リスクを抱えたり、魅力を伝えきれずにいる「もったいない」ブランドが世の中に多すぎます。私たちの役割は、彼らの「翻訳者」であり「守護者」です。
                         </p>
                     </div>
-                    <div class="bg-bel-light-gray p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold text-bel-dark-blue mb-4">私たちが目指す未来 (Vision)</h3>
-                         <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                    <div class="bg-bel-light-gray p-8 lg:p-10 rounded-lg fade-in-section" style="transition-delay: 150ms;">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-bel-dark-blue mb-4">私たちが目指す未来 (Vision)</h3>
+                         <p class="text-gray-800 leading-relaxed text-lg mb-4">
                             「法務」が、守りのコストセンターから、売上を創出する攻めのプロフィットセンターへと再定義される未来。
                         </p>
-                        <p class="text-gray-600 leading-relaxed">
+                        <p class="leading-relaxed">
                            「コンプライアンス」は、面倒な制約ではなく、ブランドを守り、顧客との信頼を築くための「最強の武器」です。私たちは、この認識を180度転換させることを目指します。
                         </p>
                     </div>
@@ -138,44 +159,44 @@
         </section>
 
         <!-- 提供価値セクション -->
-        <section id="features" class="py-20 bg-bel-light-gray">
+        <section id="features" class="py-20 lg:py-24 bg-bel-light-gray">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <p class="text-bel-orange font-bold uppercase tracking-wider mb-2">Our Value</p>
-                    <h2 class="text-3xl md:text-4xl font-bold text-bel-dark-blue">私たちが提供する3つの価値</h2>
-                    <p class="text-gray-600 mt-2 max-w-3xl mx-auto">ベルワークスが約束する、事業を成功に導くためのコアバリューです。</p>
+                <div class="text-center mb-16 fade-in-section">
+                    <p class="font-sans text-bel-orange font-bold uppercase tracking-wider mb-2">Our Value</p>
+                    <h2 class="text-3xl md:text-4xl font-black text-bel-dark-blue">私たちが提供する3つの価値</h2>
+                    <p class="font-sans mt-4 max-w-3xl mx-auto text-lg">ベルワークスが約束する、事業を成功に導くためのコアバリューです。</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
-                    <div class="bg-white p-8 rounded-lg shadow-md text-center">
-                        <div class="inline-block bg-blue-100 text-bel-dark-blue p-4 rounded-full mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center fade-in-section transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="inline-block bg-blue-100 text-bel-dark-blue p-4 rounded-full mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl lg:text-2xl font-bold text-bel-dark-blue mb-2">戦略的安全性</h3>
-                        <p class="text-gray-600">
+                        <h3 class="text-xl lg:text-2xl font-bold text-bel-dark-blue mb-3">戦略的安全性</h3>
+                        <p class="leading-relaxed">
                             単なるリスク回避ではなく、法的要件を戦略的に活用し、競合に対する参入障壁と信頼性の源泉に変えます。
                         </p>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md text-center">
-                        <div class="inline-block bg-blue-100 text-bel-dark-blue p-4 rounded-full mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center fade-in-section transform hover:-translate-y-2 transition-transform duration-300" style="transition-delay: 150ms;">
+                        <div class="inline-block bg-blue-100 text-bel-dark-blue p-4 rounded-full mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A8.003 8.003 0 0112 2a8.003 8.003 0 015.014 1.014C19.5 5 20 8 20 10c2 0 2.657 1.343 2.657 1.343a8 8 0 01-1.343 7.314zM12 18a3 3 0 100-6 3 3 0 000 6z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl lg:text-2xl font-bold text-bel-dark-blue mb-2">論理的創造性</h3>
-                        <p class="text-gray-600">
+                        <h3 class="text-xl lg:text-2xl font-bold text-bel-dark-blue mb-3">論理的創造性</h3>
+                        <p class="leading-relaxed">
                             感覚やトレンドに依存せず、データとロジックに基づき、再現性のあるクリエイティブとコンバージョンを設計します。
                         </p>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md text-center">
-                        <div class="inline-block bg-blue-100 text-bel-dark-blue p-4 rounded-full mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center fade-in-section transform hover:-translate-y-2 transition-transform duration-300" style="transition-delay: 300ms;">
+                        <div class="inline-block bg-blue-100 text-bel-dark-blue p-4 rounded-full mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl lg:text-2xl font-bold text-bel-dark-blue mb-2">実行可能な解像度</h3>
-                        <p class="text-gray-600">
+                        <h3 class="text-xl lg:text-2xl font-bold text-bel-dark-blue mb-3">実行可能な解像度</h3>
+                        <p class="leading-relaxed">
                             評論家ではなく、分析や戦略を「明日から実行できる」具体的なタスクと成果物にまで落とし込み、事業を前進させます。
                         </p>
                     </div>
@@ -184,30 +205,27 @@
         </section>
 
         <!-- プロフィールセクション -->
-        <section id="profile" class="py-20 bg-white">
+        <section id="profile" class="py-20 lg:py-24 bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <p class="text-bel-orange font-bold uppercase tracking-wider mb-2">About Me</p>
-                    <h2 class="text-3xl md:text-4xl font-bold text-bel-dark-blue">私について</h2>
+                <div class="text-center mb-16 fade-in-section">
+                    <p class="font-sans text-bel-orange font-bold uppercase tracking-wider mb-2">About Me</p>
+                    <h2 class="text-3xl md:text-4xl font-black text-bel-dark-blue">私について</h2>
                 </div>
-                <div class="md:flex md:items-center md:space-x-12 bg-bel-light-gray p-8 md:p-12 rounded-lg">
+                <div class="md:flex md:items-center md:space-x-12 bg-bel-light-gray p-8 md:p-12 rounded-lg fade-in-section">
                     <div class="md:w-1/3 text-center mb-8 md:mb-0">
-                        <!-- プロフィール写真をフォルダパスで指定 -->
                         <img src="images/profile.jpg" alt="代表者プロフィール写真" class="rounded-full w-48 h-48 mx-auto shadow-lg mb-8 object-cover">
                         <div class="flex justify-center space-x-4">
-                            <!-- 資格認定マーク -->
-                            <iframe style="width:100px!important;height:90px!important" src="https://mark.yakkihou.or.jp/ymaa/10055/" frameborder="0" width="100" height="90">YMAAマーク番号10055　ベルワークス　一般社団法人薬機法医療法規格協会</iframe>
-                            <iframe style="width:100px!important;height:90px!important" src="https://mark.yakkihou.or.jp/ktaa/10008/" frameborder="0" width="100" height="90">KTAAマーク番号10008　ベルワークス　一般社団法人薬機法医療法規格協会</iframe>
+                            <iframe style="width:100px!important;height:90px!important" src="https://mark.yakkihou.or.jp/ymaa/10055/" frameborder="0" width="100" height="90" title="YMAAマーク">YMAAマーク番号10055　ベルワークス　一般社団法人薬機法医療法規格協会</iframe>
+                            <iframe style="width:100px!important;height:90px!important" src="https://mark.yakkihou.or.jp/ktaa/10008/" frameborder="0" width="100" height="90" title="KTAAマーク">KTAAマーク番号10008　ベルワークス　一般社団法人薬機法医療法規格協会</iframe>
                         </div>
                     </div>
                     <div class="md:w-2/3">
-                        <!-- 名前を更新 -->
-                        <h3 class="text-2xl font-bold text-bel-dark-blue mb-2">南上 清一郎 (Seiichiro NANJO)</h3>
-                        <p class="text-gray-500 mb-4">ベルワークス 代表 (正式名称: 馬入編集研究所)</p>
-                        <p class="text-gray-700 leading-relaxed mb-4">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-bel-dark-blue mb-2">南上 清一郎 (Seiichiro NANJO)</h3>
+                        <p class="font-sans text-gray-500 mb-4">ベルワークス 代表 (正式名称: 馬入編集研究所)</p>
+                        <p class="leading-relaxed mb-4">
                             YMAA・KTAA個人認証マークを取得した、薬機法・医療法・景品表示法の専門家として、貴社のブランドを法務リスクから守り、その価値を最大化します。
                         </p>
-                        <p class="text-gray-700 leading-relaxed mb-4">
+                        <p class="leading-relaxed">
                             私の使命は、誠実なブランドの「翻訳者」であり「守護者」となること。誇大広告や法的リスクという「見えない足枷」からブランドを解放し、持続可能な成長を科学的根拠と法的安全性で支援します。単に儲けるのではなく、正しい者が正しく報われる市場を創ることこそが、私の存在意義です。
                         </p>
                     </div>
@@ -216,40 +234,43 @@
         </section>
 
         <!-- 思考プロセスと具体例セクション -->
-        <section id="process" class="py-20 bg-bel-light-gray">
+        <section id="process" class="py-20 lg:py-24 bg-bel-light-gray">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <p class="text-bel-orange font-bold uppercase tracking-wider mb-2">Our Process</p>
-                    <h2 class="text-3xl md:text-4xl font-bold text-bel-dark-blue">思考プロセスと具体例</h2>
-                    <p class="text-gray-600 mt-2 max-w-3xl mx-auto">
+                <div class="text-center mb-16 fade-in-section">
+                    <p class="font-sans text-bel-orange font-bold uppercase tracking-wider mb-2">Our Process</p>
+                    <h2 class="text-3xl md:text-4xl font-black text-bel-dark-blue">思考プロセスと具体例</h2>
+                    <p class="font-sans mt-4 max-w-3xl mx-auto text-lg">
                         これは実際のお客様の事例ではなく、私たちがどのように課題を分析し、具体的な解決策を立案するのか、その思考プロセスと成果物の品質をお見せするためのサンプルです。
                     </p>
                 </div>
-                <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-bel-dark-blue mb-2">ケーススタディ：株式会社VERTEX様向けLP改善提案</h3>
-                        <p class="text-gray-500 mb-6">架空のクライアントを想定した、LP改善提案の思考プロセスです。</p>
+                <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden fade-in-section">
+                    <div class="p-8 lg:p-12">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-bel-dark-blue mb-2">ケーススタディ：株式会社VERTEX様向けLP改善提案</h3>
+                        <p class="font-sans text-gray-500 mb-8">架空のクライアントを想定した、LP改善提案の思考プロセスです。</p>
                         
-                        <div class="mb-8">
-                            <h4 class="text-xl font-bold text-gray-800 mb-3 border-l-4 border-bel-orange pl-4">STEP 1: リスクの発見と分析</h4>
-                            <p class="text-gray-700 leading-relaxed">
+                        <div class="relative pl-8 mb-10 border-l-2 border-bel-orange">
+                            <div class="absolute -left-4 top-0 w-8 h-8 bg-bel-orange text-white rounded-full flex items-center justify-center font-bold font-sans">1</div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">リスクの発見と分析</h4>
+                            <p class="leading-relaxed">
                                 まず、現行LPのヘッドライン「肌細胞を活性化させ、内側から若返る。」という表現に着目します。これは薬機法上、化粧品に認められた効能効果の範囲を逸脱した「医薬品的な効果効能の標榜」にあたり、行政指導のリスクが極めて高いと判断します。
                             </p>
                         </div>
 
-                        <div class="mb-8">
-                            <h4 class="text-xl font-bold text-gray-800 mb-3 border-l-4 border-bel-orange pl-4">STEP 2: 機会の再定義</h4>
-                            <p class="text-gray-700 leading-relaxed">
-                                しかし、このリスクは「機会」でもあります。なぜなら、このようなグレーな表現に頼らざるを得ない競合が多い中、法を遵守した「誠実な表現」を貫くことで、逆に知識層や高所得者層からの絶対的な信頼を獲得できるからです。リスクを「競合が真似できない参入障壁」へと転換します。
+                        <div class="relative pl-8 mb-10 border-l-2 border-bel-orange">
+                             <div class="absolute -left-4 top-0 w-8 h-8 bg-bel-orange text-white rounded-full flex items-center justify-center font-bold font-sans">2</div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">機会の再定義</h4>
+                            <p class="leading-relaxed">
+                                しかし、このリスクは「機会」でもあります。なぜなら、このようなグレーな表現に頼らざるを得ない競合が多い中、法を遵守した「誠実な表現」を貫くことで、逆に知識層からの絶対的な信頼を獲得できるからです。リスクを「競合が真似できない参入障壁」へと転換します。
                             </p>
                         </div>
                         
-                        <div>
-                            <h4 class="text-xl font-bold text-gray-800 mb-3 border-l-4 border-bel-orange pl-4">STEP 3: 具体的な解決策の提示</h4>
-                            <p class="text-gray-700 leading-relaxed mb-4">
-                                上記の分析に基づき、具体的な代替案を複数提示します。
+                        <div class="relative pl-8">
+                             <div class="absolute -left-4 top-0 w-8 h-8 bg-bel-orange text-white rounded-full flex items-center justify-center font-bold font-sans">3</div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">具体的な解決策の提示</h4>
+                            <p class="leading-relaxed mb-4">
+                                上記の分析に基づき、具体的な代替案を提示します。
                             </p>
-                            <div class="grid md:grid-cols-2 gap-4">
+                            <div class="grid md:grid-cols-2 gap-4 font-sans">
                                 <div class="bg-red-50 border border-red-200 rounded-lg p-4">
                                     <p class="font-bold text-center text-red-700 mb-2">Before (高リスク)</p>
                                     <p class="text-center text-red-900">「肌細胞を活性化させ、内側から若返る。」</p>
@@ -259,9 +280,9 @@
                                     <p class="text-center text-green-900">「年齢を重ねた肌に、ハリと自信を。科学的根拠に基づく、次世代のエイジングケア※。」</p>
                                 </div>
                             </div>
-                             <p class="text-xs text-gray-500 mt-2 text-right">※年齢に応じたお手入れのこと</p>
+                             <p class="font-sans text-xs text-gray-500 mt-2 text-right">※年齢に応じたお手入れのこと</p>
                             <div class="mt-6 bg-blue-50 border-l-4 border-bel-dark-blue text-bel-dark-blue p-4 rounded-r-lg">
-                                <p class="font-bold">提案のゴール：法的安全性を確保しつつ、CVR（コンバージョン率）1.8倍向上を目指すLP設計</p>
+                                <p class="font-bold font-sans">提案のゴール：法的安全性を確保しつつ、CVR（コンバージョン率）1.8倍向上を目指すLP設計</p>
                             </div>
                         </div>
                     </div>
@@ -270,23 +291,23 @@
         </section>
         
         <!-- お役立ち資料 (ホワイトペーパー) セクション -->
-        <section id="whitepaper" class="py-20 bg-white">
+        <section id="whitepaper" class="py-20 lg:py-24 bg-white">
             <div class="container mx-auto px-6">
-                 <div class="bg-bel-dark-blue text-white p-8 md:p-12 rounded-lg md:flex items-center">
+                 <div class="bg-bel-dark-blue text-white p-8 md:p-12 rounded-lg md:flex items-center fade-in-section">
                     <div class="md:w-2/3">
-                        <p class="font-bold uppercase tracking-wider mb-2 text-orange-400">Free Download</p>
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">9割が知らない広告NG表現と<br>売上を2倍にする『言い換え』テクニック集</h2>
-                        <p class="text-gray-300 leading-relaxed">
+                        <p class="font-sans font-bold uppercase tracking-wider mb-2 text-orange-400">Free Download</p>
+                        <h2 class="text-3xl md:text-4xl font-black mb-4">9割が知らない広告NG表現と<br>売上を2倍にする『言い換え』テクニック集</h2>
+                        <p class="font-serif text-gray-300 leading-relaxed">
                             薬機法・景表法のリスクを回避しつつ、競合よりも力強いメッセージを顧客に届けるための具体的なノウハウを、この一冊に凝縮しました。明日からの広告クリエイティブ制作にお役立てください。
                         </p>
                     </div>
-                    <div class="md:w-1/3 mt-8 md:mt-0 md:pl-8">
-                        <form>
+                    <div class="md:w-1/3 mt-8 md:mt-0 md:pl-12">
+                        <form action="mailto:info@bel.works" method="post" enctype="text/plain">
                             <div class="mb-4">
-                                <label for="wp-email" class="sr-only">メールアドレス</label>
-                                <input type="email" id="wp-email" placeholder="メールアドレスをご入力ください" class="w-full px-4 py-3 border rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-bel-orange" required>
+                                <label for="wp-email" class="font-sans sr-only">メールアドレス</label>
+                                <input type="email" name="email" id="wp-email" placeholder="メールアドレスをご入力ください" class="w-full px-4 py-3 border rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-bel-orange font-sans" required>
                             </div>
-                            <button type="submit" class="bg-bel-orange text-white font-bold py-3 rounded-lg w-full hover:bg-orange-600 transition duration-300">
+                            <button type="submit" class="bg-bel-orange text-white font-bold py-3 rounded-lg w-full hover:bg-orange-600 transition duration-300 shadow hover:shadow-lg transform hover:-translate-y-0.5">
                                 無料で資料をダウンロード
                             </button>
                         </form>
@@ -296,28 +317,28 @@
         </section>
 
         <!-- お問い合わせセクション -->
-        <section id="contact" class="py-20 bg-gray-800">
+        <section id="contact" class="py-20 lg:py-24 bg-gray-800">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">お問い合わせ</h2>
-                    <p class="text-gray-300 mt-2 max-w-xl mx-auto">事業に関するご相談、協業のご提案など、お気軽にご連絡ください。</p>
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-black text-white">お問い合わせ</h2>
+                    <p class="font-sans text-gray-300 mt-4 max-w-xl mx-auto text-lg">事業に関するご相談、協業のご提案など、お気軽にご連絡ください。</p>
                 </div>
-                <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-                    <form>
+                <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg fade-in-section">
+                    <form action="mailto:info@bel.works" method="post" enctype="text/plain">
                         <div class="mb-4">
-                            <label for="name" class="block text-gray-700 font-bold mb-2">お名前</label>
-                            <input type="text" id="name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-bel-orange" required>
+                            <label for="name" class="font-sans block text-gray-700 font-bold mb-2">お名前</label>
+                            <input type="text" name="name" id="name" class="font-sans w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-bel-orange" required>
                         </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 font-bold mb-2">メールアドレス</label>
-                            <input type="email" id="email" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-bel-orange" required>
+                         <div class="mb-4">
+                            <label for="email_contact" class="font-sans block text-gray-700 font-bold mb-2">メールアドレス</label>
+                            <input type="email" name="email" id="email_contact" class="font-sans w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-bel-orange" required>
                         </div>
                         <div class="mb-6">
-                            <label for="message" class="block text-gray-700 font-bold mb-2">お問い合わせ内容</label>
-                            <textarea id="message" rows="5" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-bel-orange" required></textarea>
+                            <label for="message" class="font-sans block text-gray-700 font-bold mb-2">お問い合わせ内容</label>
+                            <textarea name="message" id="message" rows="5" class="font-serif w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-bel-orange" required></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="bg-bel-dark-blue text-white font-bold px-8 py-3 rounded-lg hover:bg-blue-800 transition duration-300 w-full">
+                            <button type="submit" class="bg-bel-dark-blue text-white font-bold px-8 py-3 rounded-lg hover:bg-blue-800 transition duration-300 w-full shadow hover:shadow-lg transform hover:-translate-y-0.5">
                                 送信する
                             </button>
                         </div>
@@ -328,13 +349,13 @@
     </main>
 
     <!-- フッターセクション -->
-    <footer class="bg-gray-900 text-white">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <a href="https://bel.works" class="inline-block mb-4">
+    <footer class="bg-bel-light-gray border-t border-gray-200">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <a href="https://bel.works" class="inline-block mb-6">
                 <img src="images/bel-logo.png" alt="ベルワークス ロゴ" class="h-12">
             </a>
-            <p class="text-gray-400 text-sm">ベルワークス (正式名称: 馬入編集研究所)</p>
-            <p class="mt-4 text-gray-500 text-xs">© 2025 BEL WORKS. All Rights Reserved.</p>
+            <p class="font-sans text-gray-600 text-sm">ベルワークス (正式名称: 馬入編集研究所)</p>
+            <p class="font-sans mt-4 text-gray-500 text-xs">© 2025 BEL WORKS. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -347,6 +368,28 @@
             mobileMenu.classList.toggle('hidden');
         });
 
+        // スクロールアニメーションのロジック
+        const faders = document.querySelectorAll('.fade-in-section');
+        const appearOptions = {
+            threshold: 0.2, // 20%表示されたら
+            rootMargin: "0px 0px -50px 0px" // 少し早めに反応させる
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('is-visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
         // スムーズスクロールの微調整
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -354,7 +397,7 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
-                    const headerOffset = 80; // ヘッダーの高さを考慮
+                    const headerOffset = 88; // ヘッダーの高さ(py-4 = 1rem * 2 + logo height)を考慮
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                 
@@ -362,10 +405,15 @@
                         top: offsetPosition,
                         behavior: "smooth"
                     });
+
+                    // モバイルメニューが開いていれば閉じる
+                    if(!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
                 }
             });
         });
     </script>
 
 </body>
-</ht
+</html>
