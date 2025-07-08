@@ -5,8 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ベルワークス - 攻めの法務戦略で、ブランド価値を最大化する</title>
     
+    <!-- SEOのためのメタ情報を設定 -->
+    <meta name="description" content="ベルワークスは、D2C/ヘルスケア領域の「法務」と「クリエイティブ」を融合させる専門家です。薬機法・景表法を遵守した「戦略的安全性」と、データに基づく「論理的創造性」で、ブランド価値と売上の最大化を実現します。">
+
     <!-- Faviconの指定 -->
     <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <!-- AIO/SEOのための構造化データ(JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "ベルワークス",
+          "alternateName": "馬入編集研究所",
+          "url": "https://bel.works",
+          "logo": "https://bel.works/images/bel-logo.png",
+          "description": "ベルワークスは、D2C/ヘルスケア領域の「法務」と「クリエイティブ」を融合させる専門家です。薬機法・景表法を遵守した「戦略的安全性」と、データに基づく「論理的創造性」で、ブランド価値と売上の最大化を実現します。",
+          "founder": {
+            "@type": "Person",
+            "name": "南上 清一郎"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "南上 清一郎",
+          "jobTitle": "代表",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "ベルワークス"
+          },
+          "alumniOf": [
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "明治大学法学部"
+            },
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "武蔵野美術大学造形学部"
+            }
+          ],
+          "knowsAbout": ["薬機法", "景品表示法", "広告クリエイティブ", "D2Cマーケティング", "ヘルスケア"]
+        },
+        {
+          "@type": "WebSite",
+          "url": "https://bel.works",
+          "name": "ベルワークス",
+          "publisher": {
+            "@type": "Organization",
+            "name": "ベルワークス"
+          }
+        }
+      ]
+    }
+    </script>
 
     <!-- Tailwind CSSの読み込み -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,34 +70,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* スムーズスクロール */
-        html {
-            scroll-behavior: smooth;
-        }
-        /* フォント設定 */
+        html { scroll-behavior: smooth; }
         body {
-            /* 本文の基本フォントを明朝体（Noto Serif JP）に設定 */
             font-family: 'Noto Serif JP', serif;
-            color: #374151; /* 可読性を高めるため、少し柔らかい黒に */
+            color: #374151;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        /* 見出しやUI要素はゴシック体（Inter / Noto Sans JP）を維持 */
         h1, h2, h3, h4, h5, h6, a, button, .font-sans {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 900; /* より力強い見出しに */
-        }
-        /* ヒーローセクションの背景と高さ調整 */
+        h1, h2, h3, h4, h5, h6 { font-weight: 900; }
         .hero-section {
             position: relative;
-            /* KVをベタ塗りに変更 */
-            background-color: #1e3a8a; /* bel-dark-blue */
-            height: 60vh; /* 高さを画面の60%に調整 */
+            background-color: #1e3a8a;
+            height: 60vh;
             min-height: 400px;
         }
-        /* コンテンツがヒーローセクションの中央に表示されるように */
         .hero-content {
             position: relative;
             z-index: 10;
@@ -54,7 +96,6 @@
             justify-content: center;
             align-items: center;
         }
-        /* スクロールアニメーション用のクラス */
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
@@ -66,14 +107,13 @@
         }
     </style>
     <script>
-        // Tailwind CSSのカスタム設定
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'bel-dark-blue': '#1e3a8a', // 深い紺色 (信頼性)
-                        'bel-orange': '#f97316',    // 鮮やかなオレンジ (行動喚起)
-                        'bel-light-gray': '#f8fafc', // ごく薄いグレー (背景)
+                        'bel-dark-blue': '#1e3a8a',
+                        'bel-orange': '#f97316',
+                        'bel-light-gray': '#f8fafc',
                     },
                     fontFamily: {
                         sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
@@ -87,10 +127,10 @@
 <body class="bg-white text-gray-700">
 
     <!-- ヘッダーセクション -->
-    <header class="bg-white sticky top-0 z-50 shadow-md transition-all duration-300">
+    <header class="bg-white sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="https://bel.works" class="block">
-                <img src="images/bel-logo.png" alt="ベルワークス ロゴ" class="h-10 md:h-12 transition-all duration-300">
+                <img src="images/bel-logo.png" alt="ベルワークス ロゴ" class="h-10 md:h-12">
             </a>
             <nav class="hidden md:flex space-x-6 lg:space-x-8 items-center">
                 <a href="#mission" class="text-sm lg:text-base text-gray-600 hover:text-bel-dark-blue transition duration-300">私たちの想い</a>
@@ -104,7 +144,6 @@
                 </svg>
             </button>
         </div>
-        <!-- モバイルメニュー -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
             <a href="#mission" class="block py-3 px-6 text-base text-gray-700 hover:bg-gray-50">私たちの想い</a>
             <a href="#process" class="block py-3 px-6 text-base text-gray-700 hover:bg-gray-50">思考プロセス</a>
@@ -115,20 +154,17 @@
     </header>
 
     <main>
-        <!-- ヒーローセクション -->
         <section class="hero-section text-white">
             <div class="hero-content container mx-auto px-6 text-center">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-4">
                     その広告、ブランドを<br class="md:hidden">損なっていませんか？
                 </h1>
-                <p class="font-sans text-lg md:text-xl max-w-3xl mx-auto text-gray-200">
+                <p class="font-sans text-lg md:text-xl max-w-3xl mx-auto text-gray-200 text-center md:text-left">
                     守りの法務から、売上を創る攻めの法務戦略へ。<br>
                     ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。
                 </p>
             </div>
         </section>
-
-        <!-- 私たちの想い (Mission/Vision) セクション -->
         <section id="mission" class="py-20 lg:py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-section">
@@ -157,8 +193,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- 提供価値セクション -->
         <section id="features" class="py-20 lg:py-24 bg-bel-light-gray">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-section">
@@ -203,8 +237,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- プロフィールセクション -->
         <section id="profile" class="py-20 lg:py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-section">
@@ -222,18 +254,24 @@
                     <div class="md:w-2/3">
                         <h3 class="text-2xl lg:text-3xl font-bold text-bel-dark-blue mb-2">南上 清一郎 (Seiichiro NANJO)</h3>
                         <p class="font-sans text-gray-500 mb-4">ベルワークス 代表 (正式名称: 馬入編集研究所)</p>
-                        <p class="leading-relaxed mb-4">
-                            YMAA・KTAA個人認証マークを取得した、薬機法・医療法・景品表示法の専門家として、貴社のブランドを法務リスクから守り、その価値を最大化します。
-                        </p>
-                        <p class="leading-relaxed">
-                            私の使命は、誠実なブランドの「翻訳者」であり「守護者」となること。誇大広告や法的リスクという「見えない足枷」からブランドを解放し、持続可能な成長を科学的根拠と法的安全性で支援します。単に儲けるのではなく、正しい者が正しく報われる市場を創ることこそが、私の存在意義です。
-                        </p>
+                        <div class="space-y-4">
+                            <p class="leading-relaxed">
+                                薬機法・医療法・景品表示法の専門家として、広告代理店や制作会社での実務経験に基づき、ブランド価値を最大化させるクリエイティブをご提供します。
+                            </p>
+                            <p class="leading-relaxed">
+                                私の使命は、誠実なブランドの「翻訳者」であり「守護者」となること。誇大広告や法的リスクという「見えない足枷」からブランドを解放し、持続可能な成長を科学的根拠と法的安全性で支援します。守りのコンプライアンスを、競合に対する「攻めの武器」へと転換します。
+                            </p>
+                             <p class="leading-relaxed">
+                                利益の追求だけではなく、正しい者が正しく報われる市場を創ることこそが、私の存在意義です。
+                            </p>
+                            <p class="font-sans text-xs text-gray-500 mt-6 text-right">
+                                明治大学法学部 / 武蔵野美術大学造形学部
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- 思考プロセスと具体例セクション -->
         <section id="process" class="py-20 lg:py-24 bg-bel-light-gray">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-section">
@@ -260,7 +298,7 @@
                              <div class="absolute -left-4 top-0 w-8 h-8 bg-bel-orange text-white rounded-full flex items-center justify-center font-bold font-sans">2</div>
                             <h4 class="text-xl font-bold text-gray-800 mb-2">機会の再定義</h4>
                             <p class="leading-relaxed">
-                                しかし、このリスクは「機会」でもあります。なぜなら、このようなグレーな表現に頼らざるを得ない競合が多い中、法を遵守した「誠実な表現」を貫くことで、逆に知識層からの絶対的な信頼を獲得できるからです。リスクを「競合が真似できない参入障壁」へと転換します。
+                                しかし、このリスクは「機会」でもあります。なぜなら、このようなグレーな表現に頼らざるを得ない競合が多い中、法を遵守した「誠実な表現」を貫くことで、逆に知識層や高所得者層からの絶対的な信頼を獲得できるからです。リスクを「競合が真似できない参入障壁」へと転換します。
                             </p>
                         </div>
                         
@@ -289,8 +327,6 @@
                 </div>
             </div>
         </section>
-        
-        <!-- お役立ち資料 (ホワイトペーパー) セクション -->
         <section id="whitepaper" class="py-20 lg:py-24 bg-white">
             <div class="container mx-auto px-6">
                  <div class="bg-bel-dark-blue text-white p-8 md:p-12 rounded-lg md:flex items-center fade-in-section">
@@ -315,8 +351,6 @@
                  </div>
             </div>
         </section>
-
-        <!-- お問い合わせセクション -->
         <section id="contact" class="py-20 lg:py-24 bg-gray-800">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 fade-in-section">
@@ -360,7 +394,6 @@
     </footer>
 
     <script>
-        // モバイルメニューの開閉ロジック
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -368,11 +401,10 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // スクロールアニメーションのロジック
         const faders = document.querySelectorAll('.fade-in-section');
         const appearOptions = {
-            threshold: 0.2, // 20%表示されたら
-            rootMargin: "0px 0px -50px 0px" // 少し早めに反応させる
+            threshold: 0.2,
+            rootMargin: "0px 0px -50px 0px"
         };
 
         const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
@@ -390,14 +422,13 @@
             appearOnScroll.observe(fader);
         });
 
-        // スムーズスクロールの微調整
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
-                    const headerOffset = 88; // ヘッダーの高さ(py-4 = 1rem * 2 + logo height)を考慮
+                    const headerOffset = 88;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                 
@@ -406,7 +437,6 @@
                         behavior: "smooth"
                     });
 
-                    // モバイルメニューが開いていれば閉じる
                     if(!mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
                     }
