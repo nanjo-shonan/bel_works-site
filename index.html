@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ベルワークス - 攻めの法務戦略で、ブランド価値を最大化する</title>
     
+    <!-- Faviconの指定 -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+
     <!-- Tailwind CSSの読み込み -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -25,26 +28,15 @@
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
         }
-        /* ヒーローセクションの背景画像と高さ調整 */
+        /* ヒーローセクションの背景と高さ調整 */
         .hero-section {
             position: relative;
-            /* 仮のキービジュアル画像を指定 */
-            background-image: url('https://placehold.co/1920x1080/1e3a8a/ffffff?text=Key+Visual');
-            background-size: cover;
-            background-position: center;
+            /* KVをベタ塗りに変更 */
+            background-color: #1e3a8a; /* bel-dark-blue */
             height: 60vh; /* 高さを画面の60%に調整 */
             min-height: 400px;
         }
-        /* 背景画像の上に重ねるオーバーレイ */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(30, 58, 138, 0.85); /* bel-dark-blueに透明度を追加 */
-        }
-        /* コンテンツがオーバーレイの上に表示されるように */
+        /* コンテンツがヒーローセクションの中央に表示されるように */
         .hero-content {
             position: relative;
             z-index: 10;
@@ -104,7 +96,6 @@
     <main>
         <!-- ヒーローセクション -->
         <section class="hero-section text-white">
-            <div class="hero-overlay"></div>
             <div class="hero-content container mx-auto px-6 text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
                     その広告、ブランドを<br class="md:hidden">損なっていませんか？
@@ -377,4 +368,4 @@
     </script>
 
 </body>
-</html>
+</ht
