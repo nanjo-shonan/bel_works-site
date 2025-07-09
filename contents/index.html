@@ -1,0 +1,31 @@
+---
+layout: default.html
+title: コンテンツ一覧
+description: ベルワークスが提供する、D2C/ヘルスケア領域のブランド価値を高めるための専門的なコンテンツ一覧です。薬機法や広告クリエイティブに関する情報をお届けします。
+---
+
+<div class="bg-bel-light-gray">
+    <div class="container mx-auto px-6 py-12 md:py-16">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-bel-dark-blue leading-tight">コンテンツ一覧</h1>
+        <p class="font-sans text-gray-600 mt-4">ブランド価値を高めるための、専門的な情報をお届けします。</p>
+    </div>
+</div>
+
+<div class="container mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {%- for post in collections.posts -%}
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full transform hover:-translate-y-2 transition-transform duration-300">
+            <a href="{{ post.url | url }}" class="block">
+                <img src="{{ post.data.thumbnail | url }}" alt="{{ post.data.title }}のサムネイル" class="w-full h-48 object-cover">
+            </a>
+            <div class="p-6 flex-grow flex flex-col">
+                <p class="font-sans text-sm text-bel-orange mb-2">{{ post.data.category }}</p>
+                <h2 class="text-xl font-bold text-bel-dark-blue mb-3 flex-grow">
+                    <a href="{{ post.url | url }}" class="hover:text-bel-orange transition duration-300">{{ post.data.title }}</a>
+                </h2>
+                <p class="font-sans text-sm text-gray-500">公開日: <time datetime="{{ post.date }}">{{ post.date.toLocaleDateString('ja-JP') }}</time></p>
+            </div>
+        </div>
+        {%- endfor -%}
+    </div>
+</div>
