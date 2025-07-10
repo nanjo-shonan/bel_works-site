@@ -12,20 +12,38 @@ description: ベルワークスが提供する、D2C/ヘルスケア領域のブ
 </div>
 
 <div class="container mx-auto px-6 py-16">
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {%- for post in collections.posts -%}
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full transform hover:-translate-y-2 transition-transform duration-300">
-            <a href="{{ post.url | url }}" class="block">
-                <img src="{{ post.data.thumbnail | url }}" alt="{{ post.data.title }}のサムネイル" class="w-full h-48 object-cover">
-            </a>
-            <div class="p-6 flex-grow flex flex-col">
-                <p class="font-sans text-sm text-bel-orange mb-2">{{ post.data.category }}</p>
-                <h2 class="text-xl font-bold text-bel-dark-blue mb-3 flex-grow">
-                    <a href="{{ post.url | url }}" class="hover:text-bel-orange transition duration-300">{{ post.data.title }}</a>
-                </h2>
-                <p class="font-sans text-sm text-gray-500">公開日: <time datetime="{{ post.date }}">{{ post.date.toLocaleDateString('ja-JP') }}</time></p>
-            </div>
+    <!-- タグクラウドセクション -->
+    <div class="mb-16">
+        <h2 class="text-2xl font-bold text-center mb-6">タグから探す</h2>
+        <div class="flex flex-wrap justify-center gap-2">
+            {%- for tag in collections.tagList -%}
+                <a href="#{{ tag | slugify }}" class="font-sans bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-bel-orange hover:text-white transition-colors duration-300">{{ tag }}</a>
+            {%- endfor -%}
         </div>
+    </div>
+
+    <!-- タグごとの記事一覧 -->
+    <div>
+        {%- for tag in collections.tagList -%}
+            <section id="{{ tag | slugify }}" class="mb-16 scroll-mt-24">
+                <h2 class="text-2xl md:text-3xl font-bold text-bel-dark-blue mb-8 border-b-2 border-bel-orange pb-2">{{ tag }}</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {%- for post in collections[tag] | reverse -%}
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full transform hover:-translate-y-2 transition-transform duration-300">
+                            <a href="{{ post.url | url }}" class="block">
+                                <img src="{{ post.data.thumbnail | url }}" alt="{{ post.data.title }}のサムネイル" class="w-full h-48 object-cover">
+                            </a>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <p class="font-sans text-sm text-bel-orange mb-2">{{ post.data.category }}</p>
+                                <h3 class="text-xl font-bold text-bel-dark-blue mb-3 flex-grow">
+                                    <a href="{{ post.url | url }}" class="hover:text-bel-orange transition duration-300">{{ post.data.title }}</a>
+                                </h3>
+                                <p class="font-sans text-sm text-gray-500">公開日: <time datetime="{{ post.date }}">{{ post.date | postDate }}</time></p>
+                            </div>
+                        </div>
+                    {%- endfor -%}
+                </div>
+            </section>
         {%- endfor -%}
     </div>
 </div>

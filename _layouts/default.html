@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     
     <!-- Google Tag Manager (GTM) - ここから -->
+    <!-- 下の行にある「GTM-XXXXXXX」を、あなたのGTM-IDに書き換えてください -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -37,6 +38,7 @@
 </head>
 <body class="bg-white text-gray-700">
     <!-- Google Tag Manager (noscript) - ここから -->
+    <!-- 下の行にある「GTM-XXXXXXX」を、あなたのGTM-IDに書き換えてください -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBRM4T3"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
@@ -81,7 +83,7 @@
             document.querySelectorAll('a[href^="/#"]').forEach(anchor => { 
                 anchor.addEventListener('click', function (e) { 
                     e.preventDefault(); 
-                    const homeUrl = new URL(this.href);
+                    const homeUrl = new URL(this.href, window.location.origin);
                     homeUrl.pathname = '/';
                     homeUrl.hash = this.hash;
                     

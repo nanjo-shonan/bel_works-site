@@ -1,15 +1,16 @@
 {
   "name": "bel_works-site",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Official website for BEL WORKS",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx @11ty/eleventy --serve",
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Seiichiro NANJO",
+  "license": "UNLICENSED",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2"
-  },
-  "description": ""
+    "@11ty/eleventy": "^2.0.1",
+    "luxon": "^3.4.4"
+  }
 }
