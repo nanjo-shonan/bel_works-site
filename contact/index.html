@@ -1,0 +1,53 @@
+---
+layout: default.html
+title: お問い合わせ
+---
+
+<main>
+    <!-- ページヘッダー -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">お問い合わせ</h1>
+                <p class="mt-4 text-lg text-gray-600">
+                    ご相談、ご質問、ご依頼など、お気軽にお問い合わせください。<br class="hidden md:block">
+                    以下のフォームにご記入の上、送信してください。3営業日以内にご返信いたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせフォーム -->
+    <section class="pb-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-lg">
+                <form action="#" method="POST">
+                    <div class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">お名前<span class="text-red-500 ml-1">*</span></label>
+                            <input type="text" name="name" id="name" required autocomplete="name" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                        </div>
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-700">会社名</label>
+                            <input type="text" name="company" id="company" autocomplete="organization" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">メールアドレス<span class="text-red-500 ml-1">*</span></label>
+                            <input type="email" name="email" id="email" required autocomplete="email" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">ご相談内容<span class="text-red-500 ml-1">*</span></label>
+                            <textarea id="message" name="message" rows="6" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"></textarea>
+                        </div>
+                        <div class="text-center pt-4">
+                            <p class="text-xs text-gray-500 mb-4">送信ボタンを押すことで、<a href="/privacy-policy/" class="underline hover:text-orange-500">プライバシーポリシー</a>に同意したものとみなします。</p>
+                            <button type="submit" class="btn-primary w-full md:w-auto">
+                                同意して送信する
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
