@@ -16,6 +16,7 @@
   "author": "Seiichiro Nanjo",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2"
+    "@11ty/eleventy": "^2.0.1",
+    "luxon": "^3.4.4"
   }
 }
