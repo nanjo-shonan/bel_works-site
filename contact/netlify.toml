@@ -1,0 +1,11 @@
+# netlify.toml
+# Netlifyに対するビルドと公開の設定ファイル
+
+[build]
+  # サイトをビルド（構築）するためのコマンドを指定します。
+  # package.jsonの"build"スクリプト（eleventy）が実行されます。
+  command = "npm run build"
+
+  # ビルド後に公開するディレクトリを指定します。
+  # Eleventyは、ここに完成したサイトのファイルを出力します。
+  publish = "_site"
