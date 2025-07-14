@@ -1,297 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* =================================================
-  グローバル & ヘルパー
+  基本スタイルと汎用クラス (既存資産の尊重)
 ================================================== */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+  font-family: "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333;
 }
 
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
+.section-title {
+  @apply text-3xl md:text-4xl font-bold text-gray-800 tracking-tight;
 }
 
-section {
-    padding: 80px 0;
+.btn-primary {
+  @apply inline-block bg-orange-500 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:bg-orange-600 transform hover:-translate-y-1;
 }
 
-h1, h2, h3, h4 {
-    line-height: 1.2;
-    margin-bottom: 20px;
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
-h2 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 60px;
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
-.lead {
-    font-size: 1.2rem;
-    color: #555;
-}
-
-.button {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #007bff; /* メインカラー */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #0056b3; /* ホバー時の色 */
-}
 
 /* =================================================
-  1. ヒーローセクション
+  Swiper.js スライダー関連 (既存資産の尊重)
 ================================================== */
-.hero-section {
-    color: #fff;
-    background-size: cover;
-    background-position: center;
-    padding: 120px 0;
-    text-align: center;
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px;
 }
 
-.hero-section h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+.swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.7;
 }
 
-.hero-section .lead {
-    font-size: 1.5rem;
-    color: #eee;
-    max-width: 700px;
-    margin: 0 auto;
+.swiper-pagination-bullet-active {
+  background: #orange-500;
+  opacity: 1;
 }
 
 /* =================================================
-  2. 提供価値セクション
+  カードコンポーネント (既存資産の尊重・最適化)
 ================================================== */
-.value-section {
-    background-color: #f9f9f9;
+.card {
+  @apply bg-white rounded-xl shadow-md overflow-hidden h-full transition-shadow duration-300 hover:shadow-xl;
 }
-
-.value-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
+.card-link {
+  @apply block h-full;
 }
-
-.value-item {
-    text-align: center;
+.card-img {
+  @apply w-full h-48 object-cover;
 }
-
-.value-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+.card-body {
+  @apply p-6;
 }
-
-/* =================================================
-  3. 思考のプロセスセクション
-================================================== */
-.process-section .process-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 30px;
-    border-radius: 5px;
-    margin-bottom: 40px;
+.card-title {
+  @apply font-bold text-xl mb-2 text-gray-800;
 }
-
-.process-section .button {
-    display: block;
-    width: fit-content;
-    margin: 0 auto;
-}
-
-
-/* =================================================
-  4. プロフィールセクション
-================================================== */
-.profile-section {
-    background-color: #f9f9f9;
-}
-.profile-grid {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.profile-image img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.profile-text .role {
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 15px;
-}
-
-.profile-text .qualification iframe {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-
-/* =================================================
-  5. ホワイトペーパーDLセクション
-================================================== */
-.whitepaper-section {
-    text-align: center;
+.card-tags span {
+  @apply inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2;
 }
 
 /* =================================================
-  6. コンテンツセクション
-================================================== */
-.content-section .tags {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.content-section .tag-button {
-    background: none;
-    border: 1px solid #ccc;
-    padding: 8px 16px;
-    margin: 0 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.content-section .tag-button.active,
-.content-section .tag-button:hover {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
-}
-
-.content-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.content-card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: box-shadow 0.3s;
-}
-
-.content-card:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.content-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.content-card-body {
-    padding: 20px;
-}
-
-.content-card-body .content-tags span {
-    background-color: #eee;
-    padding: 3px 8px;
-    border-radius: 3px;
-    font-size: 0.8rem;
-    margin-right: 5px;
-}
-
-/* =================================================
-  7. FAQセクション
+  FAQセクション (新規追加)
 ================================================== */
 .faq-accordion details {
-    border-bottom: 1px solid #ddd;
-    padding: 20px 0;
+    @apply border-b border-gray-200 py-4;
 }
-
 .faq-accordion summary {
-    font-weight: bold;
-    cursor: pointer;
-    list-style: none; /* markerを消す */
+    @apply font-semibold text-lg text-gray-800 cursor-pointer list-none flex justify-between items-center;
 }
-
 .faq-accordion summary::-webkit-details-marker {
-    display: none; /* markerを消す */
-}
-
-.faq-accordion summary::after {
-    content: '+';
-    float: right;
-}
-
-.faq-accordion details[open] summary::after {
-    content: '-';
-}
-
-.faq-accordion p {
-    padding-top: 15px;
-    margin-left: 20px;
-}
-
-
-/* =================================================
-  8. 最終CTA & フォームセクション
-================================================== */
-.final-cta-section {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 60px 0;
-}
-
-.final-cta-section h2 {
-    color: #fff;
-}
-
-.form-section {
-    padding-top: 60px;
-}
-
-.form-section form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.form-section .button {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.2rem;
-}
-
-.hidden {
     display: none;
 }
+.faq-accordion summary::after {
+    content: '+';
+    @apply text-xl text-orange-500 font-light;
+    transition: transform 0.2s;
+}
+.faq-accordion details[open] summary::after {
+    content: '−';
+    transform: rotate(180deg);
+}
+.faq-accordion .faq-answer {
+    @apply mt-4 text-gray-600 pl-2;
+}
+
+/* =================================================
+  その他、微調整
+================================================== */
+/* 必要に応じて、ここに他のカスタムスタイルを追加できます */
