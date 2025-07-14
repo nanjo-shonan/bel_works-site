@@ -1,39 +1,26 @@
-// .eleventy.js
-const { DateTime } = require("luxon");
-
 module.exports = function(eleventyConfig) {
-
-  // パススルーコピーの設定
+  // CSSや画像などの静的ファイルを、ビルド後も同じ構造でコピーするための設定
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("images");
-  eleventyConfig.addPassthroughCopy("admin");
+  // 将来的にJavaScriptファイルを追加した場合のために、jsフォルダもコピー対象に含めておきます。
+  eleventyConfig.addPassthroughCopy("js");
 
-  // 【修正点1】日付をフォーマットするためのフィルターを追加
-  eleventyConfig.addFilter("postDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj).toFormat("yyyy.MM.dd");
-  });
-
-  // コレクションの定義
-  // 【修正点2】*.md ではなく、**/*.html を探すように修正
-  eleventyConfig.addCollection("portfolio", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("portfolio/**/*.html").reverse();
-  });
-  eleventyConfig.addCollection("contents", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("contents/**/*.html").reverse();
-  });
-  
-  // サイトの入力元と出力先ディレクトリを指定
+  // Eleventyに、各ディレクトリの場所を教えるための設定
   return {
     dir: {
-      input: ".",
-      includes: "_includes",
-      layouts: "_layouts",
-      data: "_data",
-      output: "_site"
+      input: ".", // 入力（プロジェクトのルート）
+      includes: "_includes", // インクルードファイル（ヘッダー、フッターなど）の場所
+      data: "_data", // サイトデータ（site.jsonなど）の場所
+      layouts: "_layouts", // ★★★ この行が最も重要です ★★★ レイアウトファイルの場所
+      output: "_site" // 出力先
     },
-    passthroughFileCopy: true,
-    templateFormats: ["html", "njk", "md"],
+    // Eleventyが処理するファイルの形式を指定
+    templateFormats: [
+      "md",
+      "njk",
+      "html",
+    ],
+    // HTMLファイルをどのテンプレートエンジンで処理するか
     htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk",
   };
 };
