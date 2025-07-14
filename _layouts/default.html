@@ -3,65 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} | {{ site.name }}</title>
-    <meta name="description" content="{{ description or site.description }}">
-    
+
+    <!-- =================================================
+    1. 動的メタ情報 (SEO & OGP)
+    _data/site.json の値を動的に読み込みます
+    ================================================== -->
+    <title>{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <meta name="keywords" content="{{ site.keywords }}">
+    <meta name="author" content="{{ site.author }}">
+
+    <!-- OGP (Open Graph Protocol) 設定 -->
+    <meta property="og:title" content="{{ site.title }}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}">
+    <meta property="og:image" content="{{ site.url }}/images/ogp-default.jpg"> <!-- OGP画像のパス（後で作成） -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- =================================================
+    2. Google Tag Manager (GTM)
+    引継ぎ資料にあったGTM-KBRM4T3を設置します
+    ================================================== -->
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','{{ site.gtm_id }}');</script>
+    })(window,document,'script','dataLayer','GTM-KBRM4T3');</script>
     <!-- End Google Tag Manager -->
 
-    <!-- JSON-LD Structured Data for Google Business Profile -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "{{ site.name }} (馬入編集研究所)",
-      "url": "{{ site.url }}",
-      "logo": "{{ site.url }}/images/common/bel-logo.png",
-      "founder": {
-        "@type": "Person",
-        "name": "{{ site.author.name }}"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "茅ヶ崎市",
-        "addressRegion": "神奈川県",
-        "addressCountry": "JP"
-      },
-      "description": "湘南を拠点とする、D2C/ヘルスケア特化の広告クリエイティブオフィス『ベルワークス』\n\n薬機法・景品表示法を遵守する「戦略的安全性」と、データに基づく「論理的創造性」を両輪で提供。LPやバナー広告の制作を通じて、誠実なブランドの事業価値を最大化します\n\n私たちのサービスは、クリエイティブの提供にとどまりません。お客様のブランドが持つ本質的な価値を深く理解し、法的リスクを「信頼」という名の武器に変え、再現性のある成果にコミットする、事業成長のパートナーです。",
-      "email": "{{ site.author.email }}"
-    }
-    </script>
-
-    <link rel="icon" href="/images/common/favicon.png" type="image/png">
-
-    <!-- Google Fonts, Tailwind CSS, Swiper.js -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Custom CSS for animations etc. -->
+    <!-- CSSと外部ライブラリ -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 </head>
-<body class="text-gray-700">
+<body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBRM4T3"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <!-- =================================================
+    3. Cookie同意管理バナーの設置場所
+    このコンポーネントの具体的なコードは後続のステップで作成します
+    ================================================== -->
+    <div id="cookie-consent-banner-container"></div>
+
+
     {% include "header.html" %}
 
-    {{ content | safe }}
+    <main>
+        {{ content | safe }}
+    </main>
 
     {% include "footer.html" %}
+
+    <!-- JavaScriptライブラリ -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- カスタムスクリプト（必要に応じて） -->
+    <!-- <script src="/js/main.js"></script> -->
 
 </body>
 </html>
