@@ -1,5 +1,5 @@
 ---
-layout: "layouts/default.html"
+layout: "default.html"
 title: "ホーム"
 ---
 
@@ -45,17 +45,20 @@ title: "ホーム"
         <p>私たちは、どのように課題を発見し、解決策を導き出すのか。その思考プロセスの一例をご紹介します。</p>
         
         <!-- Eleventyでapproaches.jsonから動的に生成する部分 -->
-        {% for item in approaches %}
-        <div class="process-card">
-            <h3>{{ item.title }}</h3>
-            <p><strong>【状況設定】</strong> {{ item.situation }}</p>
-            <p><strong>【リスク分析】</strong> {{ item.risk_analysis }}</p>
-            <p><strong>【戦略的機会】</strong> {{ item.strategic_opportunity }}</p>
-        </div>
-        {% endfor %}
+        {% if approaches and approaches.length > 0 %}
+            {% for item in approaches %}
+            <div class="process-card">
+                <h3>{{ item.title }}</h3>
+                <p><strong>【状況設定】</strong> {{ item.situation }}</p>
+                <p><strong>【リスク分析】</strong> {{ item.risk_analysis }}</p>
+                <p><strong>【戦略的機会】</strong> {{ item.strategic_opportunity }}</p>
+            </div>
+            {% endfor %}
+            <a href="/approaches/" class="button">他のアプローチも見る</a>
+        {% else %}
+            <p>現在、準備中です。</p>
+        {% endif %}
         <!-- /Eleventy -->
-
-        <a href="/approaches/" class="button">他のアプローチも見る</a>
     </div>
 </section>
 
@@ -76,7 +79,7 @@ title: "ホーム"
                 <div class="qualification">
                     <p><strong>資格証明:</strong></p>
                     <!-- iframeによる資格証明の埋め込み -->
-                    <iframe src="（ここに資格証明のURLを記載）" width="100%" height="150"></iframe>
+                    <iframe src="（ここに資格証明のURLを記載）" width="100%" height="150" title="資格証明"></iframe>
                 </div>
             </div>
         </div>
@@ -109,25 +112,30 @@ title: "ホーム"
             <button class="tag-button active" data-tag="all">すべて</button>
             <button class="tag-button" data-tag="薬機法">薬機法</button>
             <button class="tag-button" data-tag="競合分析">競合分析</button>
+            <button class="tag-button" data-tag="コピーライティング">コピーライティング</button>
             <!-- タグはCMSから動的に生成することも可能 -->
         </div>
 
         <!-- コンテンツリスト -->
         <div class="content-list">
             <!-- Eleventyでcontents.jsonから動的に生成する部分 -->
-            {% for item in contents %}
-            <a href="{{ item.url }}" class="content-card" data-tags="{{ item.tags | join(',') }}">
-                <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
-                <div class="content-card-body">
-                    <h4>{{ item.title }}</h4>
-                    <div class="content-tags">
-                        {% for tag in item.tags %}
-                        <span>{{ tag }}</span>
-                        {% endfor %}
+            {% if contents and contents.length > 0 %}
+                {% for item in contents %}
+                <a href="{{ item.url }}" class="content-card" data-tags="{{ item.tags | join(',') }}">
+                    <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
+                    <div class="content-card-body">
+                        <h4>{{ item.title }}</h4>
+                        <div class="content-tags">
+                            {% for tag in item.tags %}
+                            <span>{{ tag }}</span>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
-            </a>
-            {% endfor %}
+                </a>
+                {% endfor %}
+            {% else %}
+                <p>現在、準備中です。</p>
+            {% endif %}
             <!-- /Eleventy -->
         </div>
     </div>
@@ -212,10 +220,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const tagButtons = document.querySelectorAll('.tag-button');
     const contentCards = document.querySelectorAll('.content-card');
 
+    if (!tagButtons.length || !contentCards.length) return;
+
     tagButtons.forEach(button => {
         button.addEventListener('click', function () {
-            // ボタンのアクティブ状態を切り替え
+            // 他のボタンのアクティブ状態を解除
             tagButtons.forEach(btn => btn.classList.remove('active'));
+            // クリックされたボタンをアクティブに
             this.classList.add('active');
 
             const selectedTag = this.getAttribute('data-tag');
