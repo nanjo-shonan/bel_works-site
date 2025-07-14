@@ -63,36 +63,32 @@ title: "ホーム"
 </section>
 
 <!-- =================================================
-4. プロフィールセクション (既存資産の統合)
+4. プロフィールセクション (GitHub上のオリジナルコードを復元)
 ================================================== -->
-<section class="profile-section">
+<section class="profile">
     <div class="container">
-        <h2>私について</h2>
-        <div class="profile-grid">
-            <div class="profile-image">
-                <img src="/images/profile-placeholder.jpg" alt="代表者プロフィール写真">
+        <div class="profile-wrapper">
+            <div class="profile-img-wrapper">
+                <img src="/images/common/profile.png" alt="プロフィール画像">
             </div>
-            <div class="profile-text">
-                <h3>田中 健一（たなか けんいち）</h3>
-                <p class="role">ベルワークス 代表 / 法戦略クリエイター</p>
-                <p>Webマーケティング会社で多数のD2Cブランドを支援する中で、素晴らしい製品が法務知識の不足から機会を逃す場面を数多く目にしてきました。ブランドを守り、その価値を正しく、そして力強く届けること。それが私の使命です。</p>
-                <div class="qualification">
-                    <p><strong>資格証明:</strong></p>
-                    <!-- iframeによる資格証明の埋め込み -->
-                    <iframe src="（ここに資格証明のURLを記載）" width="100%" height="150" title="資格証明"></iframe>
-                </div>
+            <div class="profile-text-wrapper">
+                <h2>About Me</h2>
+                <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+                <iframe src="https://www.yakujihou.com/authentication/certificate/pharma_marketing_KTAA_2022_0003_01.html" width="100%" height="150" title="資格証明"></iframe>
             </div>
         </div>
     </div>
 </section>
 
 <!-- =================================================
-5. ホワイトペーパーDLセクション (既存資産の統合)
+5. ホワイトペーパーDLセクション (GitHub上のオリジナルコードを復元)
 ================================================== -->
-<section class="whitepaper-section">
+<section class="white-paper">
     <div class="container">
-        <h2>無料ホワイトペーパー</h2>
-        <p>薬機法・景表法でよくあるNG表現と、それを回避しつつ商品の魅力を伝える言い換えテクニックをまとめた資料を、無料で配布しています。</p>
+        <div class="white-paper-text-wrapper">
+            <h2>薬機法NG表現集<br>無料プレゼント</h2>
+            <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+        </div>
         <div id="benchmark-form-container">
             <!-- ここにBenchmark Emailのフォーム埋め込みコードを後で設置します -->
             <p style="text-align:center; padding: 20px; border: 1px dashed #ccc;">（ここにホワイトペーパーDLフォームが設置されます）</p>
@@ -113,7 +109,6 @@ title: "ホーム"
             <button class="tag-button" data-tag="薬機法">薬機法</button>
             <button class="tag-button" data-tag="競合分析">競合分析</button>
             <button class="tag-button" data-tag="コピーライティング">コピーライティング</button>
-            <!-- タグはCMSから動的に生成することも可能 -->
         </div>
 
         <!-- コンテンツリスト -->
@@ -201,19 +196,6 @@ title: "ホーム"
     </div>
 </section>
 
-<!-- =================================================
-旧スライダーセクションの構造（将来の再利用のためコメントアウト）
-================================================== -->
-<!--
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-    </div>
-</div>
--->
-
 <script>
 // タグフィルター機能のJavaScript
 document.addEventListener('DOMContentLoaded', function () {
@@ -224,14 +206,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     tagButtons.forEach(button => {
         button.addEventListener('click', function () {
-            // 他のボタンのアクティブ状態を解除
             tagButtons.forEach(btn => btn.classList.remove('active'));
-            // クリックされたボタンをアクティブに
             this.classList.add('active');
 
             const selectedTag = this.getAttribute('data-tag');
 
-            // コンテンツカードの表示を切り替え
             contentCards.forEach(card => {
                 const cardTags = card.getAttribute('data-tags').split(',');
                 if (selectedTag === 'all' || cardTags.includes(selectedTag)) {
