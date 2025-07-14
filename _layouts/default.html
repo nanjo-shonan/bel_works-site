@@ -6,7 +6,6 @@
 
     <!-- =================================================
     1. 動的メタ情報 (SEO & OGP)
-    _data/site.json の値を動的に読み込みます
     ================================================== -->
     <title>{{ site.title }}</title>
     <meta name="description" content="{{ site.description }}">
@@ -22,8 +21,15 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- =================================================
-    2. Google Tag Manager (GTM)
-    引継ぎ資料にあったGTM-KBRM4T3を設置します
+    2. Favicon
+    ================================================== -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <!-- =================================================
+    3. Google Tag Manager (GTM)
     ================================================== -->
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -45,8 +51,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- =================================================
-    3. Cookie同意管理バナーの設置場所
-    このコンポーネントの具体的なコードは後続のステップで作成します
+    4. Cookie同意管理バナーの設置場所
     ================================================== -->
     <div id="cookie-consent-banner-container"></div>
 
