@@ -1,9 +1,34 @@
+【CSO提案】site.json 拡張計画 Ver.2.6（コード）
+
+---
+**ファイルパス:** `_data/site.json`
+```json
+// Note: サイト全体の情報を一元管理する「憲法」となるファイルです。
+// 【仕様違反修正】引継書でFIXされたタイポグラフィ（Neue Haas Groteskの代替としてWork Sans、本文Inter）を正しく反映しました。
 {
-  "title": "ベルワークス | 攻めの法務戦略でD2Cの売上を創るクリエイティブをデザイン",
-  "description": "メンズコスメに特化したD2C/ヘルスケアをデザインします。薬機法・景表法を遵守した「戦略的安全性」と、データに基づく「論理的創造性」を武器に、ブランド価値と売上を最大化するクリエイティブとコンバージョンをンコミットします。",
+  "name": "ベルワークス",
   "url": "https://bel.works",
+  "logo": "/assets/images/common/logo.svg",
+  "favicon": "/assets/images/common/favicon.ico",
   "author": "ベルワークス",
-  "keywords": "メンズコスメ, ヘルスケア, スキンケア, D2C, 薬機法, 景表法, 景品表示法, LP, 広告運用, CVR改善, LTV, デザイン",
-  "mission": "誠実なブランドが、その価値を正しく世界に届けられる社会を創る。",
-  "vision": "「法務」が、守りのコストセンターから、売上を創出する攻めのプロフィットセンターへと再定義される未来。"
+  "description": "ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」を両立させるプロフェッショナル・サービスファームです。守りの法務から、売上を創る攻めの法務戦略へ。",
+  "gtm_id": "GTM-KBRM4T3",
+  "socials": [
+    {
+      "name": "X",
+      "url": "https://twitter.com/your_account"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/company/your_account"
+    },
+    {
+      "name": "Note",
+      "url": "https://note.com/your_account"
+    }
+  ],
+  "fonts": {
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Work+Sans:wght@700&display=swap"
+  }
 }
+```
