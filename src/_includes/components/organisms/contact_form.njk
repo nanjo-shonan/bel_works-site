@@ -1,0 +1,43 @@
+{#
+  Props:
+    - sectionTitle (string, optional): フォームセクションの見出し。デフォルトは「お問い合わせ」。
+    - planName (string, optional): 事前に選択されたプラン名。渡された場合、お問い合わせ内容に自動で挿入されます。
+#}
+{% macro contactForm(sectionTitle="お問い合わせ", planName=None) %}
+<section class="py-16 sm:py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold font-sans mb-4">{{ sectionTitle }}</h2>
+            <p class="text-gray-600 mb-8">ご相談、ご質問、ご依頼など、お気軽にお問い合わせください。<br>3営業日以内にご返信いたします。</p>
+        </div>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="max-w-xl mx-auto">
+            <p class="hidden">
+                <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+            </p>
+            <div class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">お名前 <span class="text-red-600">*</span></label>
+                    <input type="text" name="name" id="name" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-signal-blue focus:border-signal-blue sm:text-sm">
+                </div>
+                <div>
+                    <label for="company" class="block text-sm font-medium text-gray-700">会社名</label>
+                    <input type="text" name="company" id="company" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-signal-blue focus:border-signal-blue sm:text-sm">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">メールアドレス <span class="text-red-600">*</span></label>
+                    <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-signal-blue focus:border-signal-blue sm:text-sm">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700">ご相談内容 <span class="text-red-600">*</span></label>
+                    <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-signal-blue focus:border-signal-blue sm:text-sm">{% if planName %}【{{ planName }}】についてのお問い合わせ{% endif %}</textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="inline-block bg-signal-blue text-white font-bold py-3 px-8 rounded-md hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105">
+                        送信する
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endmacro %}
