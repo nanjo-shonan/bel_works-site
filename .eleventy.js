@@ -1,22 +1,19 @@
 module.exports = function(eleventyConfig) {
   // 静的アセットのパススルーコピー設定
-  // 以下のフォルダは、サイト構築時にそのまま出力ディレクトリ(_site)にコピーされます。
-  eleventyConfig.addPassthroughCopy("assets");
-  eleventyConfig.addPassthroughCopy("admin");
-  eleventyConfig.addPassthroughCopy("images");
+  // "src/assets"ディレクトリを、ビルド時にそのまま出力先(_site)へコピーします。
+  eleventyConfig.addPassthroughCopy("src/assets");
 
-  // Eleventyのディレクトリ設定
+  // Eleventyのディレクトリ構成設定
   return {
-    // サイトのソースコードが"src"フォルダにあることをEleventyに伝えます。
+    // ソースファイルの入力元として"src"ディレクトリを指定します。
     dir: {
       input: "src",
       includes: "_includes",
-      // layoutsフォルダ名を、実際に作成したフォルダ名に修正します。
-      layouts: "layouts", 
+      layouts: "layouts",
       data: "_data",
-      output: "_site" // 完成したサイトが出力されるフォルダ名です。
+      output: "_site" // ビルド後のサイトが出力されるディレクトリです。
     },
-    // Eleventyが処理するテンプレートファイルの形式を指定します。
+    // Eleventyが処理するテンプレートファイルの拡張子を指定します。
     templateFormats: ["md", "njk", "html"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
