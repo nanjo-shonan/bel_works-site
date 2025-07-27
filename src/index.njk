@@ -7,52 +7,71 @@
 {% block content %}
     
     {# Import all necessary components #}
+    {% from "components/organisms/hero_section.njk" import heroSection %}
     {% from "components/organisms/value_proposition.njk" import valueProposition %}
     {% from "components/organisms/case_study_card.njk" import caseStudyCard %}
     {% from "components/organisms/whitepaper_cta.njk" import whitepaperCta %}
     {% from "components/organisms/profile_section.njk" import profileSection %}
     {% from "components/organisms/contact_form.njk" import contactForm %}
 
-    <!-- New Hero & Value Proposition Section -->
-    <section class="bg-blueprint-black text-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center pt-20 sm:pt-32 pb-16 sm:pb-24">
-                <h1 class="text-4xl sm:text-6xl font-bold font-sans mb-4 leading-tight">その広告、ブランドを損なっていませんか？</h1>
-                <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300">
-                    守りの法務から、売上を創る攻めの法務戦略へ。<br>
-                    ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。
-                </p>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+            
+            <!-- Left Column (Visual & Sticky) -->
+            <div class="hidden lg:block lg:sticky top-24 self-start">
+                <div class="w-full h-[70vh] bg-concrete-gray rounded-2xl flex items-center justify-center">
+                    {# ここに将来的にキービジュアルやインタラクティブな要素が入ります #}
+                    <p class="text-gray-400">Visual Area</p>
+                </div>
             </div>
-            <div class="pb-20 sm:pb-32">
-                {{ valueProposition() }}
+
+            <!-- Right Column (Content & Scroll) -->
+            <div class="py-16 lg:py-24">
+                
+                {# --- Hero Section --- #}
+                {{ heroSection(
+                    title='その広告、ブランドを損なっていませんか？',
+                    subtitle='守りの法務から、売上を創る攻めの法務戦略へ。',
+                    description='ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。'
+                ) }}
+
+                {# --- Value Proposition Section --- #}
+                <div class="mt-16 sm:mt-24">
+                    {{ valueProposition() }}
+                </div>
+
+                {# --- CaseStudyList Section --- #}
+                <section id="case-studies" class="mt-16 sm:mt-24">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-8 font-sans">制作実績</h2>
+                    <div class="space-y-8">
+                        {% set caseStudies = [
+                            { imageUrl: 'https://placehold.co/600x400/1A1A1A/FFFFFF?text=Case+1', title: '高価格帯メンズコスメLP', description: 'ブランド価値と法的安全性を両立させるLP戦略。', tags: ['LP制作', '薬機法', 'ブランディング'], url: '/case-studies/01' },
+                            { imageUrl: 'https://placehold.co/600x400/FFFFFF/1A1A1A?text=Case+2', title: '低価格帯ヘルスケアサプリ広告', description: '法務リスクを回避しつつCVRを最大化する広告クリエイティブ。', tags: ['広告制作', '景品表示法', 'CVR改善'], url: '/case-studies/02' },
+                            { imageUrl: 'https://placehold.co/600x400/0057FF/FFFFFF?text=Case+3', title: 'ニッチ分野（フェムテック）', description: '信頼を醸成し、熱量の高いコミュニティを形成するコンテンツ戦略。', tags: ['コンテンツ戦略', 'コミュニティ形成'], url: '/case-studies/03' }
+                        ] %}
+                        {% for item in caseStudies %}
+                            {{ caseStudyCard(item.imageUrl, item.title, item.description, item.tags, item.url) }}
+                        {% endfor %}
+                    </div>
+                </section>
+
+                {# --- Whitepaper CTA Section --- #}
+                <div class="mt-16 sm:mt-24">
+                    {{ whitepaperCta() }}
+                </div>
+
+                {# --- Profile Section --- #}
+                <div class="mt-16 sm:mt-24">
+                    {{ profileSection() }}
+                </div>
+
+                {# --- Contact Form Section --- #}
+                <div class="mt-16 sm:mt-24">
+                    {{ contactForm() }}
+                </div>
+
             </div>
         </div>
-    </section>
-
-    {# --- CaseStudyList Section --- #}
-    <section id="case-studies" class="py-16 sm:py-24 bg-concrete-gray">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 font-sans">制作実績</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {% set caseStudies = [
-                    { imageUrl: 'https://placehold.co/600x400/1A1A1A/FFFFFF?text=Case+1', title: '高価格帯メンズコスメLP', description: 'ブランド価値と法的安全性を両立させるLP戦略。', tags: ['LP制作', '薬機法', 'ブランディング'], url: '/case-studies/01' },
-                    { imageUrl: 'https://placehold.co/600x400/FFFFFF/1A1A1A?text=Case+2', title: '低価格帯ヘルスケアサプリ広告', description: '法務リスクを回避しつつCVRを最大化する広告クリエイティブ。', tags: ['広告制作', '景品表示法', 'CVR改善'], url: '/case-studies/02' },
-                    { imageUrl: 'https://placehold.co/600x400/0057FF/FFFFFF?text=Case+3', title: 'ニッチ分野（フェムテック）', description: '信頼を醸成し、熱量の高いコミュニティを形成するコンテンツ戦略。', tags: ['コンテンツ戦略', 'コミュニティ形成'], url: '/case-studies/03' }
-                ] %}
-                {% for item in caseStudies %}
-                    {{ caseStudyCard(item.imageUrl, item.title, item.description, item.tags, item.url) }}
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    {# --- Whitepaper CTA Section --- #}
-    {{ whitepaperCta() }}
-
-    {# --- Profile Section --- #}
-    {{ profileSection() }}
-
-    {# --- Contact Form Section --- #}
-    {{ contactForm() }}
+    </div>
 
 {% endblock %}

@@ -1,15 +1,8 @@
-{% macro heroSection(title, subtitle, description, ctaText, ctaUrl) %}
+{% macro heroSection(title, subtitle, description) %}
 {# --- ヒーローセクション --- #}
-{# 備考: text-centerをtext-leftに変更し、士業のような信頼感を演出 #}
-<section class="bg-blueprint-black text-white py-20 sm:py-32">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl text-left">
-            <h1 class="text-4xl sm:text-6xl font-bold font-sans mb-4 leading-tight">{{ title }}</h1>
-            <p class="text-lg sm:text-xl text-gray-300 mb-8">{{ subtitle }}<br>{{ description }}</p>
-            <a href="{{ ctaUrl }}" class="inline-block bg-signal-blue text-white font-bold py-3 px-8 rounded-md hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105">
-                {{ ctaText }}
-            </a>
-        </div>
-    </div>
-</section>
+{# 備考: 左揃えを徹底し、CTAボタンを削除。次のセクションへの自然な視線誘導を促す #}
+<div class="min-h-[60vh] flex flex-col justify-center">
+    <h1 class="text-4xl sm:text-5xl font-bold font-sans mb-4 leading-tight text-blueprint-black">{{ title }}</h1>
+    <p class="text-lg sm:text-xl text-gray-600">{{ subtitle }}<br>{{ description }}</p>
+</div>
 {% endmacro %}
