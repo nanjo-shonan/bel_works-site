@@ -13,77 +13,53 @@
     {% from "components/organisms/profile_section.njk" import profileSection %}
     {% from "components/organisms/contact_form.njk" import contactForm %}
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+    <div class="fade-in-section">
+        {{ heroSection(
+            title='その広告、ブランドを損なっていませんか？',
+            subtitle='守りの法務から、売上を創る攻めの法務戦略へ。',
+            description='ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。',
+            ctaText='詳しく見る',
+            ctaUrl='#value-proposition'
+        ) }}
+    </div>
+
+    <div class="fade-in-section">
+        {{ valueProposition() }}
+    </div>
+
+    <section id="case-studies" class="py-16 sm:py-24 bg-concrete-gray fade-in-section">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 font-sans">ポートフォリオ</h2>
             
-            <div class="hidden lg:block lg:sticky top-24 self-start">
-                <div class="w-full h-[70vh] bg-concrete-gray rounded-2xl flex items-center justify-center">
-                    <p class="text-gray-400 font-sans">Visual Area</p>
-                </div>
-            </div>
-
-            <div class="py-16 lg:py-24">
-                
-                {{ heroSection(
-                    title='その広告、ブランドを損なっていませんか？',
-                    subtitle='守りの法務から、売上を創る攻めの法務戦略へ。',
-                    description='ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。'
-                ) }}
-
-                <div class="mt-16 sm:mt-24">
-                    {{ valueProposition() }}
-                </div>
-
-                <section id="case-studies" class="mt-16 sm:mt-24">
-                    <div class="flex justify-between items-center mb-8">
-                        <h2 class="text-3xl sm:text-4xl font-bold font-sans">制作実績</h2>
-                        
-                        <!-- Tag Filter Dropdown Area -->
-                        <div id="tag-filter-dropdown" class="relative inline-block text-left">
-                            <div>
-                                <button type="button" id="tag-filter-button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-signal-blue" aria-haspopup="true" aria-expanded="false">
-                                    <span id="current-filter-label">すべて表示</span>
-                                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div id="tag-filter-options" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden z-10" role="menu" aria-orientation="vertical">
-                                <div class="py-1" role="none">
-                                    <!-- Filter options will be inserted here by JavaScript -->
-                                </div>
-                            </div>
+            <div class="swiper portfolio-swiper">
+                <div class="swiper-wrapper pb-16">
+                    {% set caseStudies = [
+                        { imageUrl: 'https://placehold.co/600x400/1A1A1A/FFFFFF?text=Case+1', title: '高価格帯メンズコスメLP', description: 'ブランド価値と法的安全性を両立させるLP戦略。', tags: ['LP制作', '薬機法', 'ブランディング'], url: '/case-studies/01' },
+                        { imageUrl: 'https://placehold.co/600x400/FFFFFF/1A1A1A?text=Case+2', title: '低価格帯ヘルスケアサプリ広告', description: '法務リスクを回避しつつCVRを最大化する広告クリエイティブ。', tags: ['広告制作', '景品表示法', 'CVR改善'], url: '/case-studies/02' },
+                        { imageUrl: 'https://placehold.co/600x400/0057FF/FFFFFF?text=Case+3', title: 'ニッチ分野（フェムテック）', description: '信頼を醸成し、熱量の高いコミュニティを形成するコンテンツ戦略。', tags: ['コンテンツ戦略', 'コミュニティ形成', 'ブランディング'], url: '/case-studies/03' },
+                        { imageUrl: 'https://placehold.co/600x400/1A1A1A/FFFFFF?text=Case+4', title: 'Another Case Study', description: 'Another description.', tags: ['Strategy'], url: '/case-studies/04' }
+                    ] %}
+                    {% for item in caseStudies %}
+                        <div class="swiper-slide">
+                            {{ caseStudyCard(item.imageUrl, item.title, item.description, item.tags, item.url) }}
                         </div>
-                    </div>
-
-                    <div id="case-study-grid" class="space-y-8">
-                        {% set caseStudies = [
-                            { imageUrl: 'https://placehold.co/600x400/1A1A1A/FFFFFF?text=Case+1', title: '高価格帯メンズコスメLP', description: 'ブランド価値と法的安全性を両立させるLP戦略。', tags: ['LP制作', '薬機法', 'ブランディング'], url: '/case-studies/01' },
-                            { imageUrl: 'https://placehold.co/600x400/FFFFFF/1A1A1A?text=Case+2', title: '低価格帯ヘルスケアサプリ広告', description: '法務リスクを回避しつつCVRを最大化する広告クリエイティブ。', tags: ['広告制作', '景品表示法', 'CVR改善'], url: '/case-studies/02' },
-                            { imageUrl: 'https://placehold.co/600x400/0057FF/FFFFFF?text=Case+3', title: 'ニッチ分野（フェムテック）', description: '信頼を醸成し、熱量の高いコミュニティを形成するコンテンツ戦略。', tags: ['コンテンツ戦略', 'コミュニティ形成', 'ブランディング'], url: '/case-studies/03' }
-                        ] %}
-                        {% for item in caseStudies %}
-                            <div class="case-study-item" data-tags="{{ item.tags | join(',') }}">
-                                {{ caseStudyCard(item.imageUrl, item.title, item.description, item.tags, item.url) }}
-                            </div>
-                        {% endfor %}
-                    </div>
-                </section>
-
-                <div class="mt-16 sm:mt-24">
-                    {{ whitepaperCta() }}
+                    {% endfor %}
                 </div>
-
-                <div class="mt-16 sm:mt-24">
-                    {{ profileSection() }}
-                </div>
-
-                <div class="mt-16 sm:mt-24">
-                    {{ contactForm() }}
-                </div>
-
+                <div class="swiper-pagination"></div>
             </div>
         </div>
+    </section>
+
+    <div class="fade-in-section">
+        {{ whitepaperCta() }}
+    </div>
+
+    <div class="fade-in-section">
+        {{ profileSection() }}
+    </div>
+
+    <div class="fade-in-section">
+        {{ contactForm() }}
     </div>
 
 {% endblock %}
