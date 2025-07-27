@@ -1,0 +1,253 @@
+---
+layout: default.html
+title: トップページ | ベルワークス
+---
+
+<main>
+    <!-- ヒーローセクション -->
+    <section class="hero-section bg-gray-800" style="background-image: url('/images/common/kv.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container mx-auto px-6 py-24 md:py-48">
+            <div class="max-w-xl">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight tracking-tighter text-white">
+                    その広告、ブランドを損なっていませんか？
+                </h1>
+                <p class="mt-6 text-lg md:text-xl text-gray-200">
+                    守りの法務から、売上を創る攻めの法務戦略へ。<br>ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 事業内容ハイライト -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 text-center">
+                <div class="p-4">
+                    <div class="flex items-center justify-center h-20 w-20 mx-auto mb-4">
+                        <img src="/images/common/icon-safety.svg" alt="戦略的安全性のアイコン" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">戦略的安全性</h3>
+                    <p class="text-gray-600">法的要件を戦略的に活用し、競合に対する参入障壁と信頼性の源泉に変えます。</p>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-center h-20 w-20 mx-auto mb-4">
+                        <img src="/images/common/icon-creativity.svg" alt="論理的創造性のアイコン" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">論理的創造性</h3>
+                    <p class="text-gray-600">データとロジックに基づき、再現性のあるクリエイティブとコンバージョンを設計します。</p>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-center h-20 w-20 mx-auto mb-4">
+                        <img src="/images/common/icon-resolution.svg" alt="実行可能な解像度のアイコン" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">実行可能な解像度</h3>
+                    <p class="text-gray-600">分析や戦略を「明日から実行できる」具体的なタスクと成果物にまで落とし込みます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新ポートフォリオ スライダー (★データ連携部分) -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title mb-4 text-center">ポートフォリオ</h2>
+            <div id="portfolio-tag-filters" class="flex flex-wrap justify-center gap-3 mb-10">
+                <!-- タグフィルターボタンは後ほどJSで動的に生成します -->
+            </div>
+            <div class="swiper portfolio-swiper">
+                <div class="swiper-wrapper pb-12">
+                    <!-- Eleventyがapproaches.jsonからカードを動的に生成 -->
+                    {% if approaches and approaches.length > 0 %}
+                        {% for item in approaches %}
+                        <div class="swiper-slide" data-tags="{{ item.tags | join(',') }}">
+                            <div class="card">
+                                <img src="{{ item.thumbnail }}" alt="{{ item.title }}" class="card-img">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ item.title }}</h4>
+                                    <div class="card-tags">
+                                        {% for tag in item.tags %}
+                                        <span>{{ tag }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="swiper-button-next portfolio-button-next"></div>
+                <div class="swiper-button-prev portfolio-button-prev"></div>
+                <div class="swiper-pagination portfolio-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ケーススタディセクション -->
+    <section id="case-study" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="section-title">ケーススタディ</h2>
+                <p class="mt-4 text-lg text-gray-600">私たちの思考プロセスとアプローチの一例をご覧ください。</p>
+            </div>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">LPの価値を最大化する論理的アプローチ</h3>
+                    <div class="space-y-6 text-gray-600">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2 border-b-2 border-orange-200 inline-block">課題：</h4>
+                            <p>感覚的なデザイン変更を繰り返すも、CVRが伸び悩んでいた。広告表現にも法的リスクが散見される状態。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2 border-b-2 border-orange-200 inline-block">解決策：</h4>
+                            <p>データ分析に基づき課題を特定。薬機法を遵守した「信頼されるコピー」と、行動経済学に基づいた「押されるUI」を再設計。A/Bテストによる仮説検証サイクルを構築。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2 border-b-2 border-orange-200 inline-block">成果：</h4>
+                            <p>CVRが1.8倍に向上。法的リスクを払拭し、ブランドの信頼性も高めることに成功。</p>
+                        </div>
+                    </div>
+                    <a href="/portfolio/approach-lp-improvement/" class="inline-block mt-8 font-semibold text-orange-500 hover:text-orange-600 group">
+                        <span>詳しく見る</span>
+                        <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+                    </a>
+                </div>
+                <div class="order-1 md:order-2">
+                    <img src="/images/portfolio/thumb-approach-lp-improvement.jpg" alt="LP改善プロジェクトのイメージ" class="rounded-2xl shadow-xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新コンテンツ スライダー (★データ連携部分) -->
+    <section class="py-20 bg-white">
+         <div class="container mx-auto px-6">
+            <h2 class="section-title mb-4 text-center">最新コンテンツ</h2>
+            <div id="contents-tag-filters" class="flex flex-wrap justify-center gap-3 mb-10">
+                <!-- タグフィルターボタンは後ほどJSで動的に生成します -->
+            </div>
+            <div class="swiper contents-swiper">
+                <div class="swiper-wrapper pb-12">
+                    <!-- Eleventyがcontents.jsonからカードを動的に生成 -->
+                    {% if contents and contents.length > 0 %}
+                        {% for item in contents %}
+                        <div class="swiper-slide" data-tags="{{ item.tags | join(',') }}">
+                            <a href="{{ item.url }}" class="card-link">
+                                <div class="card">
+                                    <img src="{{ item.thumbnail }}" alt="{{ item.title }}" class="card-img">
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{ item.title }}</h4>
+                                        <div class="card-tags">
+                                            {% for tag in item.tags %}
+                                            <span>{{ tag }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="swiper-button-next contents-button-next"></div>
+                <div class="swiper-button-prev contents-button-prev"></div>
+                <div class="swiper-pagination contents-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ホワイトペーパー・ダウンロードセクション -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="bg-gray-800 rounded-3xl p-10 md:p-16">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="text-center">
+                        <img src="/images/common/whitepaper-cover.jpg" alt="ホワイトペーパーの表紙" class="inline-block rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105 w-full max-w-xs">
+                    </div>
+                    <div class="text-white">
+                        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">専門知識を、あなたの武器に。</h2>
+                        <p class="text-gray-300 mb-8">
+                            9割の事業者が知らない広告のNG表現、そして売上を伸ばすための「戦略的言い換えテクニック」とは？<br>
+                            薬機法・景表法の専門家が、D2C/ヘルスケア領域で勝つための実践的ノウハウを、この一冊に凝縮しました。
+                        </p>
+                        <a href="#" class="btn-primary">
+                            無料で資料をダウンロード
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プロフィールセクション -->
+    <section id="profile" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 items-start">
+                <div class="md:col-span-1 text-center">
+                    <img src="/images/common/profile.jpg" alt="南上 清一郎 プロフィール写真" class="w-40 h-40 rounded-full object-cover inline-block shadow-lg">
+                    <div class="flex space-x-4 items-center justify-center mt-6">
+                        <iframe style="width:100px!important;height:90px!important" src="https://mark.yakkihou.or.jp/ymaa/10055/" frameborder="0" width="100" height="90" title="YMAA認証マーク"></iframe>
+                        <iframe style="width:100px!important;height:90px!important" src="https://mark.yakkihou.or.jp/ktaa/10008/" frameborder="0" width="100" height="90" title="KTAA認証マーク"></iframe>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">ベルワークス 代表 (正式名称: 馬入編集研究所)</h2>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">南上 清一郎 (Seiichiro NANJO)</h3>
+                    <div class="space-y-4 text-gray-600">
+                        <p>
+                            薬機法・医療法・景品表示法の専門家として、広告代理店や制作会社での実務経験に基づき、ブランド価値を最大化させるクリエイティブをご提供します。
+                        </p>
+                        <p>
+                            私の使命は、誠実なブランドの「翻訳者」であり「守護者」となること。誇大広告や法的リスクという「見えない足枷」からブランドを解放し、持続可能な成長を科学的根拠と法的安全性で支援します。守りのコンプライアンスを、競合に対する「攻めの武器」へと転換します。
+                        </p>
+                        <p>
+                            利益の追求だけではなく、正しい者が正しく報われる市場を創ることこそが、私の存在意義です。
+                        </p>
+                        <p class="text-sm text-gray-500 text-right mt-4">
+                            明治大学法学部 / 武蔵野美術大学造形学部
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせフォームセクション -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="section-title mb-4">お問い合わせ</h2>
+                <p class="text-lg text-gray-600 mb-10">
+                    ご相談、ご質問、ご依頼など、お気軽にお問い合わせください。<br>3営業日以内にご返信いたします。
+                </p>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <form action="#" method="POST">
+                    <div class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">お名前</label>
+                            <input type="text" name="name" id="name" required="" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                        </div>
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-700">会社名</label>
+                            <input type="text" name="company" id="company" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">メールアドレス</label>
+                            <input type="email" name="email" id="email" required="" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">ご相談内容</label>
+                            <textarea id="message" name="message" rows="4" required="" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn-primary w-full md:w-auto">
+                                送信する
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
