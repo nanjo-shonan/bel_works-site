@@ -1,37 +1,71 @@
-{% extends "_includes/layouts/default.njk" %}
+{% extends "layouts/default.njk" %}
 
 {# ページ固有のメタデータを設定します #}
 {% set title = "法戦略クリエイティブパートナー" %}
 {% set description = "守りの法務から、売上を創る攻めの法務戦略へ。BEL WORKSは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。" %}
 
 {% block content %}
-    
-    {% from "components/organisms/hero_section.njk" import heroSection %}
-    {{ heroSection(
-        title='その広告、ブランドを損なっていませんか？',
-        subtitle='守りの法務から、売上を創る攻めの法務戦略へ。',
-        description='BEL WORKSは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。',
-        ctaText='無料で相談する',
-        ctaUrl='/contact'
-    ) }}
+    <!-- HeroSection: Organism -->
+    <section class="bg-blueprint-black text-white text-center py-20 sm:py-32">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl sm:text-6xl font-bold font-sans mb-4 leading-tight">その広告、ブランドを損なっていませんか？</h1>
+            <p class="text-lg sm:text-xl text-gray-300 mb-2">守りの法務から、売上を創る攻めの法務戦略へ。</p>
+            <p class="max-w-3xl mx-auto text-gray-400 mb-8">ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。</p>
+            <a href="/contact" class="inline-block bg-signal-blue text-white font-bold py-3 px-8 rounded-md hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105">
+                無料で相談する
+            </a>
+        </div>
+    </section>
 
+    <!-- CaseStudyList: Organism -->
     <section class="py-16 sm:py-24 bg-concrete-gray">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 font-sans">制作実績</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
+                {# 制作実績の仮データを定義します #}
                 {% set caseStudies = [
-                    { imageUrl: 'https://placehold.co/600x400/1A1A1A/FFFFFF?text=Case+1', title: '高価格帯メンズコスメLP', description: 'ブランド価値と法的安全性を両立させるLP戦略。', tags: ['LP制作', '薬機法', 'ブランディング'], url: '/case-studies/01' },
-                    { imageUrl: 'https://placehold.co/600x400/FFFFFF/1A1A1A?text=Case+2', title: '低価格帯ヘルスケアサプリ広告', description: '法務リスクを回避しつつCVRを最大化する広告クリエイティブ。', tags: ['広告制作', '景品表示法', 'CVR改善'], url: '/case-studies/02' },
-                    { imageUrl: 'https://placehold.co/600x400/0057FF/FFFFFF?text=Case+3', title: 'ニッチ分野（フェムテック）', description: '信頼を醸成し、熱量の高いコミュニティを形成するコンテンツ戦略。', tags: ['コンテンツ戦略', 'コミュニティ形成'], url: '/case-studies/03' }
+                    {
+                        imageUrl: 'https://placehold.co/600x400/1A1A1A/FFFFFF?text=Case+1',
+                        title: '高価格帯メンズコスメLP',
+                        description: 'ブランド価値と法的安全性を両立させるLP戦略。',
+                        tags: ['LP制作', '薬機法', 'ブランディング'],
+                        url: '/case-studies/01'
+                    },
+                    {
+                        imageUrl: 'https://placehold.co/600x400/FFFFFF/1A1A1A?text=Case+2',
+                        title: '低価格帯ヘルスケアサプリ広告',
+                        description: '法務リスクを回避しつつCVRを最大化する広告クリエイティブ。',
+                        tags: ['広告制作', '景品表示法', 'CVR改善'],
+                        url: '/case-studies/02'
+                    },
+                    {
+                        imageUrl: 'https://placehold.co/600x400/0057FF/FFFFFF?text=Case+3',
+                        title: 'ニッチ分野（フェムテック）',
+                        description: '信頼を醸成し、熱量の高いコミュニティを形成するコンテンツ戦略。',
+                        tags: ['コンテンツ戦略', 'コミュニティ形成'],
+                        url: '/case-studies/03'
+                    }
                 ] %}
 
-                {% from "components/organisms/case_study_card.njk" import caseStudyCard %}
+                {# caseStudiesのデータをループ処理してカードを表示します #}
                 {% for item in caseStudies %}
-                    {{ caseStudyCard(item.imageUrl, item.title, item.description, item.tags, item.url) }}
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <a href="{{ item.url }}" class="block">
+                            <img src="{{ item.imageUrl }}" alt="{{ item.title }}の画像" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2 font-sans">{{ item.title }}</h3>
+                                <p class="text-gray-600 mb-4">{{ item.description }}</p>
+                                <div class="flex flex-wrap gap-2">
+                                    {% for tag in item.tags %}
+                                        <span class="bg-gray-200 text-gray-700 text-sm font-semibold px-2 py-1 rounded-full">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 {% endfor %}
             </div>
         </div>
     </section>
-
 {% endblock %}

@@ -11,7 +11,8 @@ module.exports = function(eleventyConfig) {
     dir: {
       input: "src",
       includes: "_includes",
-      layouts: "_layouts", // layoutsフォルダは、includesフォルダからの相対パスです。
+      // layoutsフォルダ名を、実際に作成したフォルダ名に修正します。
+      layouts: "layouts", 
       data: "_data",
       output: "_site" // 完成したサイトが出力されるフォルダ名です。
     },
