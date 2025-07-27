@@ -7,24 +7,27 @@
 {% block content %}
     
     {# Import all necessary components #}
-    {% from "components/organisms/hero_section.njk" import heroSection %}
     {% from "components/organisms/value_proposition.njk" import valueProposition %}
     {% from "components/organisms/case_study_card.njk" import caseStudyCard %}
     {% from "components/organisms/whitepaper_cta.njk" import whitepaperCta %}
     {% from "components/organisms/profile_section.njk" import profileSection %}
     {% from "components/organisms/contact_form.njk" import contactForm %}
 
-    {# --- Hero Section --- #}
-    {{ heroSection(
-        title='その広告、ブランドを損なっていませんか？',
-        subtitle='守りの法務から、売上を創る攻めの法務戦略へ。',
-        description='ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。',
-        ctaText='詳しく見る',
-        ctaUrl='#value-proposition'
-    ) }}
-
-    {# --- Value Proposition Section --- #}
-    {{ valueProposition() }}
+    <!-- New Hero & Value Proposition Section -->
+    <section class="bg-blueprint-black text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center pt-20 sm:pt-32 pb-16 sm:pb-24">
+                <h1 class="text-4xl sm:text-6xl font-bold font-sans mb-4 leading-tight">その広告、ブランドを損なっていませんか？</h1>
+                <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300">
+                    守りの法務から、売上を創る攻めの法務戦略へ。<br>
+                    ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。
+                </p>
+            </div>
+            <div class="pb-20 sm:pb-32">
+                {{ valueProposition() }}
+            </div>
+        </div>
+    </section>
 
     {# --- CaseStudyList Section --- #}
     <section id="case-studies" class="py-16 sm:py-24 bg-concrete-gray">
