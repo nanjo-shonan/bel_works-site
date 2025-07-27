@@ -1,0 +1,12 @@
+{% macro heroSection(title, subtitle, description, ctaText, ctaUrl) %}
+<section class="bg-blueprint-black text-white text-center py-20 sm:py-32">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl sm:text-6xl font-bold font-sans mb-4 leading-tight">{{ title }}</h1>
+        <p class="text-lg sm:text-xl text-gray-300 mb-2">{{ subtitle }}</p>
+        <p class="max-w-3xl mx-auto text-gray-400 mb-8">{{ description }}</p>
+        <a href="{{ ctaUrl }}" class="inline-block bg-signal-blue text-white font-bold py-3 px-8 rounded-md hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105">
+            {{ ctaText }}
+        </a>
+    </div>
+</section>
+{% endmacro %}

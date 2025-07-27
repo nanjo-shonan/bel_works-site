@@ -1,0 +1,16 @@
+{% macro header() %}
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold font-sans text-blueprint-black">BEL WORKS</a>
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="/services" class="text-gray-600 hover:text-signal-blue transition-colors">事業内容</a>
+            <a href="/case-studies" class="text-gray-600 hover:text-signal-blue transition-colors">実績</a>
+            <a href="/blog" class="text-gray-600 hover:text-signal-blue transition-colors">ブログ</a>
+            <a href="/contact" class="bg-signal-blue text-white font-bold py-2 px-5 rounded-md hover:bg-blue-700 transition-colors">お問い合わせ</a>
+        </nav>
+        <button class="md:hidden text-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </div>
+</header>
+{% endmacro %}
