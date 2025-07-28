@@ -11,6 +11,11 @@ module.exports = function (eleventyConfig) {
   // Viteプラグインの追加
   eleventyConfig.addPlugin(eleventyVitePlugin);
 
+  // --- ↓↓↓ このショートコードを追加 ↓↓↓ ---
+  // 現在の年を返すショートコード
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+  // --- ↑↑↑ このショートコードを追加 ↑↑↑ ---
+
   // Markdownライブラリの設定
   let md = markdownIt({
     html: true,
@@ -28,12 +33,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setLibrary("md", md);
 
   // Passthrough Copy: アセットファイルをビルド先へそのままコピーする設定
-  // -----------------------------------------------------------------
-  // 既存のimagesに加え、cssとjsのディレクトリを追加
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/css");
   eleventyConfig.addPassthroughCopy("src/assets/js");
-  // -----------------------------------------------------------------
 
   // ディレクトリ構成の設定
   return {

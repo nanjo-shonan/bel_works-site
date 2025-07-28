@@ -9,14 +9,16 @@
     {# グローバルCSSファイルを読み込む #}
     <link rel="stylesheet" href="/assets/css/global.css">
     
-    {# --- ↓↓↓ この行を追加 ↓↓↓ --- #}
+    {# コンポーネントCSS #}
     <link rel="stylesheet" href="/assets/css/components/header.css">
+    {# --- ↓↓↓ この行を追加 ↓↓↓ --- #}
+    <link rel="stylesheet" href="/assets/css/components/footer.css">
     
     {# 各ページ固有のmetaタグなどを挿入するためのブロック #}
     <meta name="description" content="{{ description or metadata.description }}">
 </head>
 <body>
-    {# ヘッダーなどの共通コンポーネントをインクルード #}
+    {# ヘッダーをインクルード #}
     {% include "components/organisms/header.njk" %}
 
     <main>
@@ -24,8 +26,8 @@
         {{ content | safe }}
     </main>
 
-    {# フッターなどの共通コンポーネントをインクルード（パスは現状に合わせて調整が必要な場合があります） #}
-    {# {% include "components/organisms/footer.njk" %} #}
+    {# --- ↓↓↓ この行のコメントを解除して有効化 ↓↓↓ --- #}
+    {% include "components/organisms/footer.njk" %}
 
     {# 共通のJavaScriptファイルを読み込む #}
     <script src="/assets/js/main.js" defer></script>

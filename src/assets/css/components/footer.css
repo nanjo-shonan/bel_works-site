@@ -1,0 +1,68 @@
+/* src/assets/css/components/footer.css */
+
+.footer {
+  background-color: #1A1A1A; /* theme.colors.text_primary */
+  color: #E5E7EB; /* theme.colors.border */
+  padding: 3rem 0;
+  margin-top: 4rem; /* mainコンテンツとの余白 */
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* スマホでは1カラム */
+  gap: 2rem;
+  text-align: center;
+}
+
+/* タブレット以上ではレイアウトを変更 */
+@media (min-width: 768px) { /* theme.breakpoints.tablet */
+  .footer__inner {
+    grid-template-columns: repeat(3, 1fr); /* 3カラムレイアウト */
+    text-align: left;
+  }
+}
+
+.footer__about h3 {
+  font-size: 1.25rem;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+}
+
+.footer__nav h4,
+.footer__legal h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+}
+
+.footer__nav ul,
+.footer__legal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer__nav a,
+.footer__legal a {
+  color: #E5E7EB; /* theme.colors.border */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer__nav a:hover,
+.footer__legal a:hover {
+  color: #0057FF; /* theme.colors.primary */
+}
+
+.footer__copyright {
+  border-top: 1px solid #4A4A4A; /* theme.colors.secondary */
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6B7280; /* theme.colors.text_secondary */
+}

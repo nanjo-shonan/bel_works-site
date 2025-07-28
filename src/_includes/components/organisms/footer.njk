@@ -1,41 +1,32 @@
-{% macro footer() %}
-<footer class="bg-white border-t border-gray-200">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
-            {# --- ロゴとブランドステートメント --- #}
-            <div class="lg:col-span-4">
-                <a href="/" class="inline-block mb-4">
-                    <img src="/assets/images/common/bel-logo.png" alt="ベルワークス ロゴ" class="h-8 w-auto">
-                </a>
-                <p class="text-gray-600 text-sm">
-                    守りの法務から、売上を創る攻めの法務戦略へ。
-                </p>
+{# src/_includes/components/organisms/footer.njk #}
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div class="footer__about">
+                <h3>bel_works</h3>
+                <p>D2C事業に特化したWeb制作パートナー。法務にも強い専門家が、お客様の事業成長を加速させます。</p>
             </div>
-
-            {# --- サイトマップ --- #}
-            <div class="lg:col-span-2 lg:col-start-7">
-                <h3 class="text-lg font-bold mb-4 font-sans">サイトマップ</h3>
-                <ul class="space-y-3">
-                    <li><a href="/services" class="text-gray-600 hover:text-signal-blue transition-colors">事業内容</a></li>
-                    <li><a href="/case-studies" class="text-gray-600 hover:text-signal-blue transition-colors">実績</a></li>
-                    <li><a href="/blog" class="text-gray-600 hover:text-signal-blue transition-colors">ブログ</a></li>
-                    <li><a href="/privacy-policy" class="text-gray-600 hover:text-signal-blue transition-colors">プライバシーポリシー</a></li>
+            <div class="footer__nav">
+                <h4>Menu</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/service/">Service</a></li>
+                    <li><a href="/works/">Works</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/contact/">Contact</a></li>
                 </ul>
             </div>
-
-            {# --- 思想の提示 --- #}
-            <div class="lg:col-span-4">
-                <h3 class="text-lg font-bold mb-4 font-sans">最初の対話</h3>
-                <p class="text-gray-600">
-                    私たちの仕事は、まずあなたのビジョンを深く理解することから始まります。
-                </p>
+            <div class="footer__legal">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                    <li><a href="/terms/">Terms of Service</a></li>
+                </ul>
             </div>
-
         </div>
-        <div class="mt-16 border-t border-gray-200 pt-8 text-center text-gray-500">
-            <p>&copy; 2025 ベルワークス. All Rights Reserved.</p>
+        <div class="footer__copyright">
+            <p>&copy; {% year %} bel_works. All Rights Reserved.</p>
         </div>
     </div>
 </footer>
-{% endmacro %}
