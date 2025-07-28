@@ -6,13 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or metadata.title }} | bel_works</title>
     
-    {# グローバルCSSファイルを読み込む #}
-    <link rel="stylesheet" href="/assets/css/global.css">
-    
-    {# コンポーネントCSS #}
-    <link rel="stylesheet" href="/assets/css/components/header.css">
-    {# --- ↓↓↓ この行を追加 ↓↓↓ --- #}
-    <link rel="stylesheet" href="/assets/css/components/footer.css">
+    {# --- ↓↓↓ 既存のlinkタグをすべて削除し、このVite用ショートコードに置き換え ↓↓↓ --- #}
+    {% viteCss "src/assets/css/main.css" %}
     
     {# 各ページ固有のmetaタグなどを挿入するためのブロック #}
     <meta name="description" content="{{ description or metadata.description }}">
@@ -26,7 +21,7 @@
         {{ content | safe }}
     </main>
 
-    {# --- ↓↓↓ この行のコメントを解除して有効化 ↓↓↓ --- #}
+    {# フッターをインクルード #}
     {% include "components/organisms/footer.njk" %}
 
     {# 共通のJavaScriptファイルを読み込む #}

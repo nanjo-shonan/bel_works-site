@@ -1,0 +1,16 @@
+/* src/assets/css/main.css */
+
+/**
+ * このファイルは、サイト全体のすべてのCSSファイルを統括するエントリーポイントです。
+ * Viteはこのファイルを起点に、必要なCSSをすべてバンドルします。
+ */
+
+/* 1. グローバルスタイル */
+@import './global.css';
+
+/* 2. コンポーネントスタイル */
+@import './components/header.css';
+@import './components/footer.css';
+
+/* 3. ページ固有のスタイル（今後追加） */
+/* @import './pages/home.css'; */
