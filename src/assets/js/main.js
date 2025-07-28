@@ -2,18 +2,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- Scroll Animation ---
     const fadeInSections = document.querySelectorAll('.fade-in-section');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
+    if (fadeInSections.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
         });
-    }, {
-        threshold: 0.1
-    });
-    fadeInSections.forEach(section => {
-        observer.observe(section);
-    });
+        fadeInSections.forEach(section => {
+            observer.observe(section);
+        });
+    }
 
     // --- Swiper Slider for Portfolio ---
     const portfolioSwiper = new Swiper('.portfolio-swiper', {
@@ -39,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const consentButton = document.getElementById('cookie-consent-button');
 
     if (consentBanner && consentButton) {
-        // Check if consent has already been given
         if (!localStorage.getItem('cookie_consent')) {
             setTimeout(() => {
                 consentBanner.classList.remove('hidden');

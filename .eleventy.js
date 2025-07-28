@@ -2,10 +2,10 @@ module.exports = function(eleventyConfig) {
   // 静的アセットのパススルーコピー設定
   eleventyConfig.addPassthroughCopy("src/assets");
 
-  // カスタムコレクション：各タグの投稿をグループ化
+  // カスタムコレクション：各タグの投稿をグループ化する機能
   eleventyConfig.addCollection("postsByTag", collectionApi => {
     let tags = {};
-    // "case-studies"というタグを持つコンテンツを収集対象とします（将来的に拡張可能）
+    // "case-studies"というタグを持つコンテンツを収集対象とします
     collectionApi.getFilteredByTag("case-studies").forEach(item => {
       if ("tags" in item.data) {
         for (const tag of item.data.tags) {
@@ -17,7 +17,7 @@ module.exports = function(eleventyConfig) {
       }
     });
 
-    // ページネーションで使いやすい形式に変換
+    // ページネーションで使いやすい形式に変換します
     return Object.keys(tags).map(tagName => {
       return {
         tagName: tagName,
