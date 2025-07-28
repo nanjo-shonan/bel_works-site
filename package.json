@@ -1,22 +1,19 @@
 {
   "name": "bel_works-site",
   "version": "1.0.0",
-  "description": "BEL WORKS Official Website",
-  "main": ".eleventy.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "eleventy --serve",
     "dev": "eleventy --serve",
     "build": "eleventy"
   },
-  "keywords": [
-    "eleventy",
-    "static-site"
-  ],
-  "author": "Seiichiro Nanjo",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "luxon": "^3.7.1"
+    "@11ty/eleventy-plugin-vite": "^4.0.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^8.6.7"
   }
 }
