@@ -1,0 +1,58 @@
+/* src/assets/css/components/header.css */
+
+.header {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E5E7EB; /* theme.colors.border */
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  /* Appleのようなすりガラス効果（グラスモーフィズム）を後ほど追加予定 */
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo a {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #1A1A1A; /* theme.colors.text_primary */
+  text-decoration: none;
+}
+
+.header__nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem; /* ナビゲーションリンク間の余白 */
+}
+
+.header__nav a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4A4A4A; /* theme.colors.text_secondary */
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+
+/* ホバー/アクティブ時に下線を表示する効果 */
+.header__nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #0057FF; /* theme.colors.primary */
+  transition: width 0.3s ease;
+}
+
+.header__nav a:hover::after,
+.header__nav a[aria-current="page"]::after {
+  width: 100%;
+}
