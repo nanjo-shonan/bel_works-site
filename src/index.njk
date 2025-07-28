@@ -1,65 +1,16 @@
-{% extends "layouts/default.njk" %}
+{# src/index.njk #}
+---
+layout: layouts/base.njk
+title: "D2C特化・法務に強いWeb制作・システム開発｜bel_works"
+description: "D2C事業に特化したWebサイト制作ならbel_worksへ。景表法・特商法などの法務にも強い専門家が、お客様のブランド価値を最大化し、事業成長を加速させる信頼性の高いWebサイトを構築します。"
+---
 
-{# ページ固有のメタデータを設定します #}
-{% set title = "法戦略クリエイティブパートナー" %}
-{% set description = "守りの法務から、売上を創る攻めの法務戦略へ。ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。" %}
-
-{% block content %}
-    
-    {% from "components/organisms/hero_section.njk" import heroSection %}
-    {% from "components/organisms/value_proposition.njk" import valueProposition %}
-    {% from "components/organisms/case_study_card.njk" import caseStudyCard %}
-    {% from "components/organisms/whitepaper_cta.njk" import whitepaperCta %}
-    {% from "components/organisms/profile_section.njk" import profileSection %}
-    {% from "components/organisms/contact_form.njk" import contactForm %}
-
-    <div class="fade-in-section">
-        {{ heroSection(
-            title='その広告、ブランドを損なっていませんか？',
-            subtitle='守りの法務から、売上を創る攻めの法務戦略へ。',
-            description='ベルワークスは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」の専門家です。',
-            ctaText='詳しく見る',
-            ctaUrl='#value-proposition'
-        ) }}
-    </div>
-
-    <div class="fade-in-section">
-        {{ valueProposition() }}
-    </div>
-
-    <section id="portfolio" class="py-16 sm:py-24 bg-concrete-gray fade-in-section">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 font-sans">ポートフォリオ</h2>
-            
-            <div class="swiper portfolio-swiper">
-                <div class="swiper-wrapper pb-16">
-                    {% set caseStudies = [
-                        { imageUrl: 'https://placehold.co/600x400/1A1A1A/FFFFFF?text=Case+1', title: '高価格帯メンズコスメLP', description: 'ブランド価値と法的安全性を両立させるLP戦略。', tags: ['LP制作', '薬機法', 'ブランディング'], url: '/case-studies/01' },
-                        { imageUrl: 'https://placehold.co/600x400/FFFFFF/1A1A1A?text=Case+2', title: '低価格帯ヘルスケアサプリ広告', description: '法務リスクを回避しつつCVRを最大化する広告クリエイティブ。', tags: ['広告制作', '景品表示法', 'CVR改善'], url: '/case-studies/02' },
-                        { imageUrl: 'https://placehold.co/600x400/0057FF/FFFFFF?text=Case+3', title: 'ニッチ分野（フェムテック）', description: '信頼を醸成し、熱量の高いコミュニティを形成するコンテンツ戦略。', tags: ['コンテンツ戦略', 'コミュニティ形成', 'ブランディング'], url: '/case-studies/03' },
-                        { imageUrl: 'https://placehold.co/600x400/1A1A1A/FFFFFF?text=Case+4', title: 'Another Case Study', description: 'Another description.', tags: ['Strategy'], url: '/case-studies/04' }
-                    ] %}
-                    {% for item in caseStudies %}
-                        <div class="swiper-slide">
-                            {{ caseStudyCard(item.imageUrl, item.title, item.description, item.tags, item.url) }}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <div class="fade-in-section">
-        {{ whitepaperCta() }}
-    </div>
-
-    <div class="fade-in-section">
-        {{ profileSection() }}
-    </div>
-
-    <div class="fade-in-section">
-        {{ contactForm() }}
-    </div>
-
-{% endblock %}
+{#
+  リニューアルの第一歩として、ページの中身をシンプルにします。
+  このページが正しく表示されれば、デザインシステムの基盤が
+  正常に機能していることの証明となります。
+#}
+<div class="container" style="padding-top: 4rem; padding-bottom: 4rem; text-align: center;">
+  <h1 style="font-size: 2.25rem; margin-bottom: 1rem;">新しいbel_worksサイトへようこそ</h1>
+  <p style="font-size: 1.125rem; color: #4A4A4A;">現在、サイト全体をリニューアル中です。新しいデザインと機能にご期待ください。</p>
+</div>

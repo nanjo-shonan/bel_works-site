@@ -18,7 +18,6 @@ html {
 }
 
 body {
-  /* JSONで定義した値を直接記述。CSSカスタム変数化は後続のタスクで検討 */
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
   color: #1A1A1A;
   background-color: #FFFFFF;
@@ -49,4 +48,16 @@ img, picture, video, canvas, svg {
 *:focus-visible {
   outline: 2px dashed #0057FF;
   outline-offset: 2px;
+}
+
+/* -------------------------------------------------- */
+/* ↓↓↓ このコンテナクラスを追加 ↓↓↓ */
+/* -------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1120px; /* コンテンツの最大幅 */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem; /* 左右の余白 */
+  padding-right: 1.5rem;
 }
