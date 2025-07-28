@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or metadata.title }} | bel_works</title>
     
-    {# --- ↓↓↓ 既存のlinkタグをすべて削除し、このVite用ショートコードに置き換え ↓↓↓ --- #}
-    {% viteCss "src/assets/css/main.css" %}
+    {# ViteがJS経由でCSSをここに注入します #}
+    {% viteScript "src/assets/js/main-vite.js" %}
     
     {# 各ページ固有のmetaタグなどを挿入するためのブロック #}
     <meta name="description" content="{{ description or metadata.description }}">
@@ -24,7 +24,7 @@
     {# フッターをインクルード #}
     {% include "components/organisms/footer.njk" %}
 
-    {# 共通のJavaScriptファイルを読み込む #}
-    <script src="/assets/js/main.js" defer></script>
+    {# 既存のJSファイルはBabelで処理して読み込む #}
+    {% viteBabelScript "src/assets/js/main.js" %}
 </body>
 </html>

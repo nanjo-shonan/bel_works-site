@@ -24,14 +24,12 @@ body {
   line-height: 1.6;
 }
 
-/* --- ↓↓↓ この部分に !important を追加 ↓↓↓ --- */
+/* 見出しに明朝体を適用（!importantを削除） */
 h1, h2, h3, h4, h5, h6 {
-  /* 診断のため、!importantでスタイルを強制的に適用する */
-  font-family: 'Noto Serif JP', serif !important;
+  font-family: 'Noto Serif JP', serif;
   font-weight: 700;
   line-height: 1.2;
 }
-/* --- ↑↑↑ この部分に !important を追加 ↑↑↑ --- */
 
 a {
   color: #0057FF;
