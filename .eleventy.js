@@ -5,9 +5,11 @@ module.exports = function(eleventyConfig) {
   // カスタムコレクション：各タグの投稿をグループ化する機能
   eleventyConfig.addCollection("postsByTag", collectionApi => {
     let tags = {};
-    // "case-studies"というタグを持つコンテンツを収集対象とします
-    collectionApi.getFilteredByTag("case-studies").forEach(item => {
-      if ("tags" in item.data) {
+    // 将来的に作成する"case-studies"コレクション内のアイテムを収集対象とします
+    const caseStudies = collectionApi.getFilteredByTag("case-studies") || [];
+    
+    caseStudies.forEach(item => {
+      if (item.data.tags) {
         for (const tag of item.data.tags) {
           if (!tags[tag]) {
             tags[tag] = [];
