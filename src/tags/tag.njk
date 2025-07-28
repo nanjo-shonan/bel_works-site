@@ -1,0 +1,32 @@
+---
+pagination:
+  data: collections.postsByTag
+  size: 1
+  alias: tag
+  filter:
+    - all
+permalink: "/tags/{{ tag.tagName | slug }}/"
+---
+{% extends "layouts/default.njk" %}
+
+{% set title = "タグ: " + tag.tagName %}
+{% set description = tag.tagName + "に関連するコンテンツ一覧" %}
+
+{% block content %}
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="mb-12">
+        <h1 class="text-4xl font-bold font-sans">タグ: {{ tag.tagName }}</h1>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {# This is a placeholder. The actual logic will be more complex. #}
+        {% for item in tag.items %}
+            {# We will reuse the case_study_card component here later #}
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold font-sans">{{ item.data.title }}</h2>
+                <p class="text-gray-600 mt-2">{{ item.data.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
