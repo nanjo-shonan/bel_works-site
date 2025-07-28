@@ -1,45 +1,50 @@
-module.exports = function(eleventyConfig) {
-  // 静的アセットのパススルーコピー設定
-  eleventyConfig.addPassthroughCopy("src/assets");
+// .eleventy.js
 
-  // カスタムコレクション：各タグの投稿をグループ化する機能
-  eleventyConfig.addCollection("postsByTag", collectionApi => {
-    let tags = {};
-    // 将来的に作成する"case-studies"コレクション内のアイテムを収集対象とします
-    const caseStudies = collectionApi.getFilteredByTag("case-studies") || [];
-    
-    caseStudies.forEach(item => {
-      if (item.data.tags) {
-        for (const tag of item.data.tags) {
-          if (!tags[tag]) {
-            tags[tag] = [];
-          }
-          tags[tag].push(item);
-        }
-      }
-    });
+const eleventyVitePlugin = require("@11ty/eleventy-plugin-vite");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
 
-    // ページネーションで使いやすい形式に変換します
-    return Object.keys(tags).map(tagName => {
-      return {
-        tagName: tagName,
-        items: tags[tagName]
-      };
-    });
+/**
+ * @param {import("@11ty/eleventy").UserConfig} eleventyConfig
+ */
+module.exports = function (eleventyConfig) {
+  // Viteプラグインの追加
+  eleventyConfig.addPlugin(eleventyVitePlugin);
+
+  // Markdownライブラリの設定
+  let md = markdownIt({
+    html: true,
+    breaks: true,
+    linkify: true,
+  }).use(markdownItAnchor, {
+    permalink: markdownItAnchor.permalink.ariaHidden({
+      placement: "after",
+      class: "direct-link",
+      symbol: "#",
+      level: [1, 2, 3, 4],
+    }),
+    slugify: eleventyConfig.getFilter("slugify"),
   });
+  eleventyConfig.setLibrary("md", md);
 
-  // Eleventyのディレクトリ構成設定
+  // Passthrough Copy: アセットファイルをビルド先へそのままコピーする設定
+  // -----------------------------------------------------------------
+  // 既存のimagesに加え、cssとjsのディレクトリを追加
+  eleventyConfig.addPassthroughCopy("src/assets/images");
+  eleventyConfig.addPassthroughCopy("src/assets/css");
+  eleventyConfig.addPassthroughCopy("src/assets/js");
+  // -----------------------------------------------------------------
+
+  // ディレクトリ構成の設定
   return {
     dir: {
       input: "src",
+      output: "_site",
       includes: "_includes",
-      layouts: "layouts",
+      layouts: "_includes/layouts",
       data: "_data",
-      output: "_site"
     },
-    templateFormats: ["md", "njk", "html"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
-    dataTemplateEngine: "njk",
   };
 };

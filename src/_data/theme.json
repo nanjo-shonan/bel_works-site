@@ -1,0 +1,16 @@
+// src/_data/theme.json
+{
+  "colors": {
+    "primary": "#0057FF",
+    "secondary": "#4A4A4A",
+    "background": "#FFFFFF",
+    "text_primary": "#1A1A1A",
+    "text_secondary": "#6B7280",
+    "border": "#E5E7EB",
+    "accent": "#FFC700"
+  },
+  "fonts": {
+    "body": "'Inter', 'Noto Sans JP', sans-serif",
+    "heading": "'Inter', 'Noto Sans JP', sans-serif"
+  }
+}

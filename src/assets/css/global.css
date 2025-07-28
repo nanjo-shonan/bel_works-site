@@ -1,0 +1,52 @@
+/* src/assets/css/global.css */
+
+/* Google Fontsの読み込み */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+/* CSSリセット */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  /* JSONで定義した値を直接記述。CSSカスタム変数化は後続のタスクで検討 */
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  color: #1A1A1A;
+  background-color: #FFFFFF;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: #0057FF;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+*:focus-visible {
+  outline: 2px dashed #0057FF;
+  outline-offset: 2px;
+}
