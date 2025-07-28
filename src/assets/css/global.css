@@ -3,7 +3,7 @@
 /* Google Fontsの読み込み（Noto Serif JPを追加） */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap');
 
-/* CSSリセット */
+/* (他のCSSリセット部分は省略) */
 *,
 *::before,
 *::after {
@@ -18,21 +18,20 @@ html {
 }
 
 body {
-  /* 本文はゴシック体を維持 */
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
   color: #1A1A1A;
   background-color: #FFFFFF;
   line-height: 1.6;
 }
 
-/* --- ↓↓↓ この部分を修正 ↓↓↓ --- */
+/* --- ↓↓↓ この部分に !important を追加 ↓↓↓ --- */
 h1, h2, h3, h4, h5, h6 {
-  /* 見出しに明朝体を適用 */
-  font-family: 'Noto Serif JP', serif;
+  /* 診断のため、!importantでスタイルを強制的に適用する */
+  font-family: 'Noto Serif JP', serif !important;
   font-weight: 700;
   line-height: 1.2;
 }
-/* --- ↑↑↑ この部分を修正 ↑↑↑ --- */
+/* --- ↑↑↑ この部分に !important を追加 ↑↑↑ --- */
 
 a {
   color: #0057FF;
