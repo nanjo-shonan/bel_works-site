@@ -8,11 +8,20 @@
     {% viteScript "src/assets/js/main-vite.js" %}
 </head>
 <body>
+
+    {# ヘッダーをアニメーションコンテナの外に出す #}
     {% include "partials/header.njk" %}
-    <main>
-        {{ content | safe }}
-    </main>
+
+    {# スクロールアニメーションを適用するコンテナ #}
+    <div id="container" class="container">
+        <main>
+            {{ content | safe }}
+        </main>
+    </div><!-- /#container -->
+
+    {# フッターもアニメーションコンテナの外に出す #}
     {% include "partials/footer.njk" %}
+
     {% viteBabelScript "src/assets/js/main.js" %}
 </body>
 </html>
