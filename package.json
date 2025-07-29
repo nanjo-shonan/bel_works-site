@@ -1,19 +1,16 @@
 {
   "name": "bel_works-site",
   "version": "1.0.0",
-  "description": "",
+  "description": "A website for Bel Works.",
   "main": "index.js",
   "scripts": {
-    "dev": "eleventy --serve",
+    "start": "eleventy --serve",
     "build": "eleventy"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-plugin-vite": "^4.0.0",
-    "markdown-it": "^14.1.0",
-    "markdown-it-anchor": "^8.6.7"
+    "@11ty/eleventy": "^2.0.1"
   }
 }
