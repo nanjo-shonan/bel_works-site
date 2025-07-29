@@ -3,13 +3,12 @@
 const eleventyVitePlugin = require("@11ty/eleventy-plugin-vite");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
-const Nunjucks = require("nunjucks"); // Nunjucksをインポート
+const Nunjucks = require("nunjucks");
 
 /**
  * @param {import("@11ty/eleventy").UserConfig} eleventyConfig
  */
 module.exports = function (eleventyConfig) {
-  // Viteプラグインを安定化オプション付きで有効化
   eleventyConfig.addPlugin(eleventyVitePlugin, {
     viteOptions: {
       server: {
@@ -20,14 +19,12 @@ module.exports = function (eleventyConfig) {
     },
   });
 
-  // フロントマターの解析方法を明示的に設定
   eleventyConfig.setFrontMatterParsingOptions({
     excerpt: true,
     engine: "yaml",
     delimiters: "---",
   });
 
-  // Nunjucksのカスタム環境を設定
   let nunjucksEnvironment = new Nunjucks.Environment(
     new Nunjucks.FileSystemLoader("src/_includes")
   );
@@ -50,12 +47,10 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.setLibrary("md", md);
 
-  // アセットファイルのパススルー設定
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/css");
   eleventyConfig.addPassthroughCopy("src/assets/js");
 
-  // ディレクトリ構成の設定
   return {
     dir: {
       input: "src",
