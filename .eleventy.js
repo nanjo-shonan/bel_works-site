@@ -1,6 +1,6 @@
 // .eleventy.js
 
-// const eleventyVitePlugin = require("@11ty/eleventy-plugin-vite"); // 診断のため一時的にコメントアウト
+const eleventyVitePlugin = require("@11ty/eleventy-plugin-vite");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 
@@ -8,7 +8,17 @@ const markdownItAnchor = require("markdown-it-anchor");
  * @param {import("@11ty/eleventy").UserConfig} eleventyConfig
  */
 module.exports = function (eleventyConfig) {
-  // eleventyConfig.addPlugin(eleventyVitePlugin); // 診断のため一時的にコメントアウト
+  // Viteプラグインを再度有効化し、安定動作のためのオプションを追加
+  eleventyConfig.addPlugin(eleventyVitePlugin, {
+    viteOptions: {
+      server: {
+        // ファイルシステムの変更を監視する際に、より安定したポーリング方式を使用
+        watch: {
+          usePolling: true,
+        },
+      },
+    },
+  });
 
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
