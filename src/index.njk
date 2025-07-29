@@ -1,22 +1,12 @@
 {# src/index.njk #}
 ---
-layout: layouts/base.njk
+# レイアウトディレクトリからの相対パスを正しく指定
+layout: base.njk
 title: "ベルワークス | 法務とクリエイティブで事業価値を最大化"
 description: "ベルワークスは、D2C/ヘルスケア領域の「法務」と「クリエイティブ」を融合させるビジネスパートナーです。薬機法・景表法を遵守した「戦略的安全性」と、データに基づく「論理的創造性」で、ブランド価値と売上の最大化を加速します。"
 ---
 
-{# --- 診断ここから --- #}
-{#
-  ヒーローセクションの代わりに、フッターを読み込んでみる。
-  もし、ここにフッターが表示されれば、include命令は機能しており、
-  問題はhero_section.njkファイル側にあることが確定する。
-#}
-<div style="border: 5px solid red; padding: 2rem; text-align: center; margin: 2rem 0;">
-    <h2>診断エリア</h2>
-    {% include "components/organisms/footer.njk" %}
-</div>
-{# --- 診断ここまで --- #}
+{# ヒーローセクションをインクルード #}
+{% include "components/organisms/hero_section.njk" %}
 
-
-{# 本来のヒーローセクション（一時的にコメントアウト） #}
-{# {% include "components/organisms/hero_section.njk" %} #}
+{# 今後、この下に他のセクション（実績、サービス概要など）を追加していきます #}

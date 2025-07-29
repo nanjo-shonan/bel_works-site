@@ -1,11 +1,31 @@
-{# src/index.njk #}
----
-layout: layouts/base.njk
-title: "ベルワークス | 法務とクリエイティブで事業価値を最大化"
-description: "ベルワークスは、D2C/ヘルスケア領域の「法務」と「クリエイティブ」を融合させるビジネスパートナーです。薬機法・景表法を遵守した「戦略的安全性」と、データに基づく「論理的創造性」で、ブランド価値と売上の最大化を加速します。"
----
+{# src/_includes/layouts/base.njk #}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }} | bel_works</title>
+    
+    {# Viteのショートコードでアセットを読み込む #}
+    {% viteScript "src/assets/js/main-vite.js" %}
+    
+    <meta name="description" content="{{ description or metadata.description }}">
+</head>
+<body>
+    {# ヘッダーをインクルード #}
+    {% include "components/organisms/header.njk" %}
 
-{# ヒーローセクションをインクルード #}
-{% include "components/organisms/hero_section.njk" %}
+    <main>
+        {# 各ページの内容がここに挿入される #}
+        {{ content | safe }}
+    </main>
 
-{# 今後、この下に他のセクション（実績、サービス概要など）を追加していきます #}
+    {# フッターをインクルード #}
+    {% include "components/organisms/footer.njk" %}
+
+    {# 既存のJSファイルはBabelで処理して読み込む #}
+    {% viteBabelScript "src/assets/js/main.js" %}
+</body>
+</html>
