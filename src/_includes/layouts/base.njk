@@ -3,29 +3,22 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+    <title>{{ title }} | ベルワークス</title>
+    <meta name="description" content="{{ description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or metadata.title }} | bel_works</title>
-    
-    {# Viteのショートコードでアセットを読み込む #}
     {% viteScript "src/assets/js/main-vite.js" %}
-    
-    <meta name="description" content="{{ description or metadata.description }}">
 </head>
 <body>
-    {# ヘッダーをインクルード #}
-    {% include "components/organisms/header.njk" %}
+    {# 新しいパスでヘッダーをインクルード #}
+    {% include "partials/header.njk" %}
 
     <main>
-        {# 各ページの内容がここに挿入される #}
         {{ content | safe }}
     </main>
 
-    {# フッターをインクルード #}
-    {% include "components/organisms/footer.njk" %}
+    {# 新しいパスでフッターをインクルード #}
+    {% include "partials/footer.njk" %}
 
-    {# 既存のJSファイルはBabelで処理して読み込む #}
     {% viteBabelScript "src/assets/js/main.js" %}
 </body>
 </html>
