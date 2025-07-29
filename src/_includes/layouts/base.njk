@@ -1,36 +1,23 @@
-{#
-  src/_includes/layouts/base.njk
-  [修正のポイント]
-  - ヘッダーとフッターを、スクロールアニメーションの対象となるコンテナの外側に配置。
-  - メインコンテンツをラップする要素のIDを、より意味的に分かりやすい "scroll-container" に変更。
-#}
 <!DOCTYPE html>
-<html lang="{{ metadata.language }}">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or metadata.title }}</title>
-    <meta name="description" content="{{ description or metadata.description }}">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-
     {% include "partials/header.njk" %}
-
-    <!-- このコンテナがスクロールとアニメーションの対象となる -->
     <div id="scroll-container">
         <main>
             {{ content | safe }}
         </main>
     </div>
-
     {% include "partials/footer.njk" %}
-
-    <!-- JavaScriptライブラリ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
-    <script src="{{ '/assets/js/main.js' | url }}"></script>
-
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

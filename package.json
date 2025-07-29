@@ -1,15 +1,11 @@
 {
-  "name": "bel_works-site",
+  "name": "bel-works-site-final",
   "version": "1.0.0",
-  "description": "A website for Bel Works.",
-  "main": "index.js",
+  "description": "",
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
   }

@@ -1,7 +1,3 @@
-# Netlifyのビルド設定
 [build]
-  # 実行するビルドコマンド
   command = "npm run build"
-  
-  # 公開するディレクトリ (Eleventyの出力先と一致させる)
   publish = "_site"
