@@ -1,8 +1,8 @@
-{% macro heroSection(title, subtitle, description) %}
-{# --- ヒーローセクション --- #}
-{# 備考: 左揃えを徹底し、CTAボタンを削除。次のセクションへの自然な視線誘導を促す #}
-<div class="min-h-[60vh] flex flex-col justify-center">
-    <h1 class="text-4xl sm:text-5xl font-bold font-sans mb-4 leading-tight text-blueprint-black">{{ title }}</h1>
-    <p class="text-lg sm:text-xl text-gray-600">{{ subtitle }}<br>{{ description }}</p>
-</div>
-{% endmacro %}
+{# src/_includes/components/organisms/hero_section.njk #}
+<section class="hero">
+    <div class="container">
+        <h1 class="hero__heading">「守り」の法務から、「攻め」の事業戦略へ。</h1>
+        <p class="hero__subheading">私たちは、D2C/ヘルスケア領域の「戦略的安全性」と「論理的創造性」を融合させ、貴社の事業価値を最大化するビジネスパートナーです。</p>
+        <a href="/service/" class="hero__cta">事業内容を見る</a>
+    </div>
+</section>

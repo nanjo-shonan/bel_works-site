@@ -11,6 +11,8 @@
 /* 2. コンポーネントスタイル */
 @import './components/header.css';
 @import './components/footer.css';
+/* --- ↓↓↓ この行を追加 ↓↓↓ --- */
+@import './components/hero_section.css';
 
 /* 3. ページ固有のスタイル（今後追加） */
 /* @import './pages/home.css'; */
