@@ -1,14 +1,8 @@
 {#
-  src/_includes/layouts/base.njk (修正後)
-  -----------------------------------------
+  src/_includes/layouts/base.njk
   [修正のポイント]
-  1. ヘッダー({% include "partials/header.njk" %})を、
-     スクロールアニメーションの対象である <div id="container"> の外側に移動しました。
-  2. フッター({% include "partials/footer.njk" %})も同様に、
-     <div id="container"> の外側に移動しました。
-
-  これにより、#container に transform スタイルが適用されても、
-  ヘッダーとフッターの position:fixed の挙動に影響がなくなります。
+  - ヘッダーとフッターを、スクロールアニメーションの対象となるコンテナの外側に配置。
+  - メインコンテンツをラップする要素のIDを、より意味的に分かりやすい "scroll-container" に変更。
 #}
 <!DOCTYPE html>
 <html lang="{{ metadata.language }}">
@@ -21,18 +15,15 @@
 </head>
 <body>
 
-    <!-- ★ヘッダーをアニメーションコンテナの外に出す -->
     {% include "partials/header.njk" %}
 
-    <!-- スクロールアニメーションを適用するコンテナ -->
-    <div id="container" class="container">
+    <!-- このコンテナがスクロールとアニメーションの対象となる -->
+    <div id="scroll-container">
         <main>
-            <!-- 各ページのコンテンツがここに挿入される -->
             {{ content | safe }}
         </main>
-    </div><!-- /#container -->
+    </div>
 
-    <!-- ★フッターもアニメーションコンテナの外に出す -->
     {% include "partials/footer.njk" %}
 
     <!-- JavaScriptライブラリ -->
