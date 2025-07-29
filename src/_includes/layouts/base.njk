@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or metadata.title }} | bel_works</title>
     
-    {% viteScript "src/assets/js/main-vite.js" %}
+    {# 診断のため、Viteのショートコードを標準のlinkタグに戻す #}
+    <link rel="stylesheet" href="/assets/css/main.css">
     
     <meta name="description" content="{{ description or metadata.description }}">
 </head>
@@ -24,7 +25,7 @@
     {# フッターをインクルード #}
     {% include "components/organisms/footer.njk" %}
 
-    {# 既存のJSファイルはBabelで処理して読み込む #}
-    {% viteBabelScript "src/assets/js/main.js" %}
+    {# 診断のため、Viteのショートコードを標準のscriptタグに戻す #}
+    <script src="/assets/js/main.js" defer></script>
 </body>
 </html>
