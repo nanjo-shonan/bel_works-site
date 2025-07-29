@@ -1,8 +1,16 @@
 <header class="header">
-    <div class="logo">Bel Works</div>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/service/">Service</a>
-        <a href="/contact/">Contact</a>
-    </nav>
+    <div class="container header__inner">
+        <div class="header__logo">
+            <a href="/">ベルワークス</a>
+        </div>
+        <nav class="header__nav" aria-label="メインナビゲーション">
+            <ul>
+                {# LP内の各セクションへのアンカーリンクに変更 #}
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#value">Value</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
