@@ -5,7 +5,18 @@ title: "ベルワークス | 法務とクリエイティブで事業価値を最
 description: "ベルワークスは、D2C/ヘルスケア領域の「法務」と「クリエイティブ」を融合させるビジネスパートナーです。薬機法・景表法を遵守した「戦略的安全性」と、データに基づく「論理的創造性」で、ブランド価値と売上の最大化を加速します。"
 ---
 
-<div class="container" style="padding-top: 4rem; padding-bottom: 4rem; text-align: center;">
-  <h1 style="font-size: 2.25rem; margin-bottom: 1rem;">新しいbel_worksサイトへようこそ</h1>
-  <p style="font-size: 1.125rem; color: #4A4A4A;">現在、サイト全体をリニューアル中です。新しいデザインと機能にご期待ください。</p>
+{# --- 診断ここから --- #}
+{#
+  ヒーローセクションの代わりに、フッターを読み込んでみる。
+  もし、ここにフッターが表示されれば、include命令は機能しており、
+  問題はhero_section.njkファイル側にあることが確定する。
+#}
+<div style="border: 5px solid red; padding: 2rem; text-align: center; margin: 2rem 0;">
+    <h2>診断エリア</h2>
+    {% include "components/organisms/footer.njk" %}
 </div>
+{# --- 診断ここまで --- #}
+
+
+{# 本来のヒーローセクション（一時的にコメントアウト） #}
+{# {% include "components/organisms/hero_section.njk" %} #}
