@@ -1,13 +1,18 @@
-module.exports = function(eleventyConfig) {
-  // src/assets フォルダの中身を、ビルド後もそのまま出力先フォルダにコピーします
-  eleventyConfig.addPassthroughCopy("src/assets/");
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("src/assets/images");
+  eleventyConfig.addPassthroughCopy("src/assets/css");
+  eleventyConfig.addPassthroughCopy("src/assets/js");
 
   return {
     dir: {
       input: "src",
       output: "_site",
       includes: "_includes",
-      layouts: "_includes/layouts"
-    }
+      layouts: "layouts",
+    },
+    templateFormats: ["md", "njk", "html"],
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
+    passthroughFileCopy: true,
   };
 };
