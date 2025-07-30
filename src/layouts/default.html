@@ -4,36 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- =================================================
-    1. SEO & AIO / OGP Meta Tags
-       - Nunjucks 'default' filter syntax corrected: `default: "value"` -> `default("value")`
-    ================================================== -->
     <title>{{ title | default("ベルワークス - 攻めの法務戦略で、ブランド価値を最大化する") }}</title>
     <meta name="description" content="{{ description | default('ベルワークスは、D2C/ヘルスケア領域の「法務」と「クリエイティブ」を融合させる専門家です。薬機法・景表法を遵守した「戦略的安全性」と、データに基づく「論理的創造性」で、ブランド価値と売上の最大化を加速します。') }}">
     <meta name="keywords" content="{{ keywords | default('Web制作, D2C, ヘルスケア, 薬機法, 景品表示法, LP制作, 広告運用, コンサルティング, 湘南, 茅ヶ崎, 法務, クリエイティブ') }}">
     <meta name="author" content="{{ author | default('ベルワークス') }}">
 
-    <!-- OGP (Open Graph Protocol) -->
     <meta property="og:title" content="{{ title | default('ベルワークス - 攻めの法務戦略で、ブランド価値を最大化する') }}">
     <meta property="og:description" content="{{ description | default('ベルワークスは、D2C/ヘルスケア領域の「法務」と「クリエイティブ」を融合させる専門家です。') }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="og:image" content="{{ site.url }}/assets/images/common/ogp-default.png">
+    <meta property="og:image" content="/assets/images/common/ogp-default.png">
     <meta property="og:site_name" content="ベルワークス">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- =================================================
-    2. Favicon & Assets Paths
-       - Corrected paths to reflect Eleventy's passthrough copy configuration.
-    ================================================== -->
     <link rel="icon" href="/assets/images/common/favicon.ico" sizes="any">
     <link rel="icon" href="/assets/images/common/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/assets/images/common/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.webmanifest">
 
-    <!-- =================================================
-    3. Fonts & CSS & Libraries
-    ================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -55,9 +43,6 @@
     </script>
     <link rel="stylesheet" href="/assets/css/style.css">
 
-    <!-- =================================================
-    4. Google Tag Manager (GTM)
-    ================================================== -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -71,17 +56,15 @@
 
     <div id="cookie-consent-banner-container"></div>
 
-    {% include "partials/header.njk" %}
+    {# --- Corrected include paths based on your screenshot --- #}
+    {% include "header.njk" %}
 
     <main id="main-content">
         {{ content | safe }}
     </main>
 
-    {% include "partials/footer.html" %}
+    {% include "footer.njk" %}
 
-    <!-- =================================================
-    5. JavaScript Libraries & Custom Scripts
-    ================================================== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
