@@ -1,12 +1,14 @@
 {
-  "name": "bel-works-site-final",
+  "name": "bel-works-site",
   "version": "1.0.0",
-  "description": "",
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-plugin-vite": "^4.0.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^8.6.7"
   }
 }
