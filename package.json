@@ -1,6 +1,7 @@
 {
   "name": "bel-works-site",
   "version": "1.0.0",
+  "description": "Bel Works Official Website",
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy"

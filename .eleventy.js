@@ -1,38 +1,21 @@
+// .eleventy.js
 const eleventyVitePlugin = require("@11ty/eleventy-plugin-vite");
-const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function(eleventyConfig) {
   // Plugins
   eleventyConfig.addPlugin(eleventyVitePlugin);
 
   // Passthrough Copy for assets
-  eleventyConfig.addPassthroughCopy("src/assets/images");
-  eleventyConfig.addPassthroughCopy("src/assets/css");
-  eleventyConfig.addPassthroughCopy("src/assets/js");
-
-  // Markdown-It Configuration
-  let markdownLibrary = markdownIt({
-    html: true,
-    breaks: true,
-    linkify: true
-  }).use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: "after",
-      class: "direct-link",
-      symbol: "#",
-      level: [1,2,3,4],
-    }),
-    slugify: eleventyConfig.getFilter("slugify")
-  });
-  eleventyConfig.setLibrary("md", markdownLibrary);
+  // This ensures your assets are copied to the output directory
+  eleventyConfig.addPassthroughCopy("src/assets");
 
   return {
     dir: {
       input: "src",
       includes: "_includes",
-      // layoutsキーを明示的に指定。
-      // これにより、レイアウトは "src/_includes/layouts" から探されます。
+      // This key tells Eleventy that layout files are located
+      // inside the `_includes` directory, in a folder named `layouts`.
+      // Final path: `src/_includes/layouts/`
       layouts: "layouts", 
       data: "_data",
       output: "_site"
